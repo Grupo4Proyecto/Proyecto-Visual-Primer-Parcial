@@ -66,8 +66,8 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="articulos.vb" />
-    <Compile Include="categorias.vb" />
+    <Compile Include="articulo.vb" />
+    <Compile Include="categoria.vb" />
     <Compile Include="detalleFactura.vb" />
     <Compile Include="factura.vb" />
     <Compile Include="medioPago.vb" />
