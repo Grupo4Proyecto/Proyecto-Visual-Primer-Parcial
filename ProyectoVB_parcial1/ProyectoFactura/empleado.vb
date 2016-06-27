@@ -65,9 +65,12 @@ Public Class empleado
     Public Function GuardarEmpleado() As Boolean
 
         Dim doc As XmlDocument = New XmlDocument
-        doc.Load(rutaDatos)
-        Dim nodoList As XmlNodeList
+        'doc.Load(rutaDatos)
+        Dim dec As XmlDeclaration = doc.CreateXmlDeclaration("1.0", Nothing, Nothing)
+        doc.AppendChild(dec)
+        'Dim nodoList As XmlNodeList
         Dim elementoEmpleado As XmlElement = doc.CreateElement("usuario")
+        Dim nodoId As XmlNode = doc.CreateElement("id")
         Dim nodoNombre As XmlNode = doc.CreateElement("nombre")
         Dim nodoApellido As XmlNode = doc.CreateElement("apellido")
         Dim nodoCedula As XmlNode = doc.CreateElement("cedula")
@@ -75,6 +78,7 @@ Public Class empleado
         Dim nodoNick As XmlNode = doc.CreateElement("nickname")
         Dim nodoPass As XmlNode = doc.CreateElement("password")
         Dim nodoTipo As XmlNode = doc.CreateElement("tipo")
+        nodoId.InnerText = Me.Id
         nodoNombre.InnerText = Me.Nombre
         nodoApellido.InnerText = Me.Apellido
         nodoCedula.InnerText = Me.Cedula
@@ -83,6 +87,7 @@ Public Class empleado
         nodoPass.InnerText = Me.Clave
         nodoTipo.InnerText = tipo.vendedor
 
+        elementoEmpleado.AppendChild(nodoId)
         elementoEmpleado.AppendChild(nodoNombre)
         elementoEmpleado.AppendChild(nodoApellido)
         elementoEmpleado.AppendChild(nodoCedula)
