@@ -3,14 +3,15 @@
     Sub Main()
 
         Dim tipoRol As Byte = 1
-        If (login(tipoRol)) Then
-            If (tipoRol = 1) Then
-                mostrarMenuAdministrador()
-            Else
-                mostrarMenuVendedor()
+        While True
+            If (login(tipoRol)) Then
+                If (tipoRol = 1) Then
+                    mostrarMenuAdministrador()
+                Else
+                    mostrarMenuVendedor()
+                End If
             End If
-        End If
-
+        End While
 
     End Sub
 
@@ -31,11 +32,10 @@
     End Sub
 
     Public Sub mostrarMenuAdministrador()
-        Console.Clear()
         Dim opcion As String = String.Empty
-        Dim continua As String = "s"
 
-        Do While continua = "s"
+        While True
+            Console.Clear()
             Console.WriteLine(vbTab & "--------------------------------------------------------------" & vbNewLine)
             Console.WriteLine(vbTab & vbTab & vbTab & "==============================")
             Console.WriteLine(vbTab & vbTab & vbTab & "|      MENÚ ADMIN            |")
@@ -44,9 +44,9 @@
             Console.WriteLine(vbTab & vbTab & vbTab & "2.- Agregar producto" & vbNewLine)
             Console.WriteLine(vbTab & vbTab & vbTab & "3.- Agregar Vendedor" & vbNewLine)
             Console.WriteLine(vbTab & vbTab & vbTab & "4.- Salir" & vbNewLine)
-            Console.WriteLine(vbTab & vbTab & vbTab & "Escriba su opción: " & vbNewLine)
-            Console.WriteLine(vbTab & "--------------------------------------------------------------" & vbNewLine)
+            Console.Write(vbTab & vbTab & vbTab & "Escriba su opción: ")
             opcion = Console.ReadLine()
+            Console.WriteLine(vbTab & "--------------------------------------------------------------" & vbNewLine)
 
             Select Case opcion
                 Case 1
@@ -56,14 +56,11 @@
                 Case 3
                     agregarVendedor()
                 Case 4
-                    salir()
+                    Exit While
                 Case Else
                     Console.WriteLine("Opcion no existe. Escriba bien.")
             End Select
-
-            Console.WriteLine("Continuar [s/n]: ")
-            continua = Console.ReadLine()
-        Loop
+        End While
 
     End Sub
 
@@ -73,33 +70,29 @@
 
 
     Public Sub mostrarMenuVendedor()
-        Console.Clear()
         Dim opcion As String = String.Empty
-        Dim continua As String = "s"
 
-        Do While continua = "s"
+        While True
+            Console.Clear()
             Console.WriteLine(vbTab & "--------------------------------------------------------------" & vbNewLine)
             Console.WriteLine(vbTab & vbTab & vbTab & "==============================")
             Console.WriteLine(vbTab & vbTab & vbTab & "|         MENÚ VENDEDOR      |")
             Console.WriteLine(vbTab & vbTab & vbTab & "==============================" & vbNewLine)
             Console.WriteLine(vbTab & vbTab & vbTab & "1.- Facturar" & vbNewLine)
             Console.WriteLine(vbTab & vbTab & vbTab & "2.- Salir" & vbNewLine)
-            Console.WriteLine(vbTab & vbTab & vbTab & "Escriba su opción: " & vbNewLine)
-            Console.WriteLine(vbTab & "--------------------------------------------------------------" & vbNewLine)
+            Console.Write(vbTab & vbTab & vbTab & "Escriba su opción: ")
             opcion = Console.ReadLine()
+            Console.WriteLine(vbTab & "--------------------------------------------------------------" & vbNewLine)
 
             Select Case opcion
                 Case 1
                     Facturar()
                 Case 2
-                    salir()
+                    Exit While
                 Case Else
                     Console.WriteLine("Opcion no existe. Escriba bien.")
             End Select
-
-            Console.WriteLine("Continuar [s/n]: ")
-            continua = Console.ReadLine()
-        Loop
+        End While
 
     End Sub
 

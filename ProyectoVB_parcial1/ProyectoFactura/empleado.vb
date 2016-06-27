@@ -1,9 +1,10 @@
 ﻿Imports System.Xml
+Imports System.Configuration
 
 Public Class empleado
     Inherits persona
 
-    Private rutaDatos As String = "C:\Users\Studio Qatro\Source\Repos\Proyecto-Visual-Primer-Parcial\ProyectoVB_parcial1\ProyectoFactura\DATOS\usuarios.xml"
+    Private rutaDatos As String = ConfigurationManager.AppSettings("archivoUsuarios")
 
     Public Enum tipo As Byte
         administrador = 1
