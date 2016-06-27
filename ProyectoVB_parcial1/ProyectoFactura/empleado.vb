@@ -62,4 +62,40 @@ Public Class empleado
         Return False
     End Function
 
+    Public Function GuardarEmpleado() As Boolean
+
+        Dim doc As XmlDocument = New XmlDocument
+        doc.Load(rutaDatos)
+        Dim nodoList As XmlNodeList
+        Dim elementoEmpleado As XmlElement = doc.CreateElement("usuario")
+        Dim nodoNombre As XmlNode = doc.CreateElement("nombre")
+        Dim nodoApellido As XmlNode = doc.CreateElement("apellido")
+        Dim nodoCedula As XmlNode = doc.CreateElement("cedula")
+        Dim nodoEmail As XmlNode = doc.CreateElement("email")
+        Dim nodoNick As XmlNode = doc.CreateElement("nickname")
+        Dim nodoPass As XmlNode = doc.CreateElement("password")
+        Dim nodoTipo As XmlNode = doc.CreateElement("tipo")
+        nodoNombre.InnerText = Me.Nombre
+        nodoApellido.InnerText = Me.Apellido
+        nodoCedula.InnerText = Me.Cedula
+        nodoEmail.InnerText = Me.Email
+        nodoNick.InnerText = Me.Usuario
+        nodoPass.InnerText = Me.Clave
+        nodoTipo.InnerText = tipo.vendedor
+
+        elementoEmpleado.AppendChild(nodoNombre)
+        elementoEmpleado.AppendChild(nodoApellido)
+        elementoEmpleado.AppendChild(nodoCedula)
+        elementoEmpleado.AppendChild(nodoEmail)
+        elementoEmpleado.AppendChild(nodoNick)
+        elementoEmpleado.AppendChild(nodoPass)
+        elementoEmpleado.AppendChild(nodoTipo)
+
+        doc.AppendChild(elementoEmpleado)
+        doc.Save(rutaDatos)
+
+        Return True
+
+    End Function
+
 End Class
