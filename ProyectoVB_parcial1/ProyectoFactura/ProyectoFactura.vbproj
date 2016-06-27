@@ -66,6 +66,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="empleado.vb" />
     <Compile Include="articulo.vb" />
     <Compile Include="categoria.vb" />
     <Compile Include="detalleFactura.vb" />
@@ -90,7 +91,7 @@
     <Compile Include="permisos.vb" />
     <Compile Include="provincia.vb" />
     <Compile Include="rol.vb" />
-    <Compile Include="usuario.vb" />
+    <Compile Include="persona.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -111,6 +112,9 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DATOS\usuarios.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
