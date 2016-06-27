@@ -43,7 +43,23 @@
     End Sub
 
     Public Sub agregarVendedor()
-        Console.WriteLine("FUNCION POR DEFINIR")
+        Dim empleadoNuevo As empleado = New empleado
+        Console.Write("Ingrese Id")
+        empleadoNuevo.Id = Console.ReadLine
+        Console.Write("Ingrese Nombre")
+        empleadoNuevo.Nombre = Console.ReadLine
+        Console.Write("Ingrese Apellido")
+        empleadoNuevo.Apellido = Console.ReadLine
+        Console.Write("Ingrese Cedula")
+        empleadoNuevo.Cedula = Console.ReadLine
+        Console.Write("Ingrese Email")
+        empleadoNuevo.Email = Console.ReadLine
+        Console.Write("Ingrese nombre User")
+        empleadoNuevo.Usuario = Console.ReadLine
+        Console.Write("Ingrese Password")
+        empleadoNuevo.Clave = Console.ReadLine
+        'Console.WriteLine("FUNCION POR DEFINIR")
+        empleadoNuevo.GuardarEmpleado()
     End Sub
 
     Public Sub salir()
