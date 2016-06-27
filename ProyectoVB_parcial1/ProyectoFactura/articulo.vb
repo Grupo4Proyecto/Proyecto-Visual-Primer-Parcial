@@ -1,4 +1,6 @@
-﻿Public Class articulo
+﻿Imports System.Xml
+
+Public Class articulo
     Private _id As Integer
     Public Property Id() As Integer
         Get
@@ -101,13 +103,9 @@
         End Set
     End Property
 
-
-
-
-
-
-
-
-
+    Public Function GenerarXml(xmlDoc As XmlDocument)
+        Dim articulo As XmlNode = xmlDoc.CreateElement("categoria")
+        Return articulo
+    End Function
 
 End Class

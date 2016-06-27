@@ -16,7 +16,26 @@
     End Sub
 
     Public Sub agregarCategoria()
-        Console.WriteLine("FUNCION POR DEFINIR")
+        Dim continuar As String = "s"
+
+        Do While continuar = "s"
+            Console.Clear()
+
+            Dim objCategoria As New categoria()
+
+            Console.WriteLine("Id: ")
+            objCategoria.Id = Console.ReadLine()
+
+            Console.WriteLine("Nombre: ")
+            objCategoria.Nombre = Console.ReadLine()
+
+            objCategoria.GuardarCategoria()
+
+            Console.WriteLine("categoria guardada")
+
+            Console.Write(vbTab & vbTab & vbTab & "Guardar otra categoria? [s/n]: ")
+            continuar = Console.ReadLine()
+        Loop
     End Sub
 
     Public Sub agregarProducto()
