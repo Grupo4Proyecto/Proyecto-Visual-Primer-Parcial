@@ -1,11 +1,48 @@
-<?xml version="1.0"?>
-<usuario>
-  <id>6</id>
-  <nombre>jona</nombre>
-  <apellido>mac</apellido>
-  <cedula>234737432</cedula>
-  <email>natho</email>
-  <nickname>natho</nickname>
-  <password>1234</password>
-  <tipo>2</tipo>
-</usuario>
+﻿<usuarios>
+  +  <usuario>
+    +    <id>1</id>
+    +    <nombre>Lorena Isabel</nombre>
+    +    <apellido>Lucero Gonzalez</apellido>
+    +    <cedula>0924000011</cedula>
+    +    <email>loreliji@gmail.com</email>
+    +    <nickname>loreliji</nickname>
+    +    <password>1234</password>
+    +    <tipo>1</tipo>
+    +
+  </usuario>
+  +<usuario>
+    +    <id>2</id>
+    +    <nombre>Jonathan</nombre>
+    +    <apellido>Macias</apellido>
+    +    <cedula>098765756</cedula>
+    +    <email>jmacias@gmail.com</email>
+    +    <nickname>admin</nickname>
+    +    <password>1234</password>
+    +    <tipo>1</tipo>
+    +
+  </usuario>
+  +<usuario>
+    +    <id>3</id>
+    +    <nombre>David</nombre>
+    +    <apellido>Jurado</apellido>
+    +    <cedula>07868767</cedula>
+    +    <email>djurado@gmail.com</email>
+    +    <nickname>djurado</nickname>
+    +    <password>1234</password>
+    +    <tipo>2</tipo>
+    +
+  </usuario>
+  +<usuario>
+    +    <id>4</id>
+    +    <nombre>Grace</nombre>
+    +    <apellido>Cordero</apellido>
+    +    <cedula>087665</cedula>
+    +    <email>gcordero@gmail.com</email>
+    +    <nickname>gcordero</nickname>
+    +    <password>1234</password>
+    +    <tipo>2</tipo>
+    +
+  </usuario>
+  +
+</usuarios>
+
