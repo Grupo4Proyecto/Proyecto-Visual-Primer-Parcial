@@ -45,7 +45,7 @@ Public Class categoria
 
             Dim nodoId As XmlNode = doc.CreateElement("id")
             Dim nodoNombre As XmlNode = doc.CreateElement("nombre")
-            Dim nodoProducto As XmlNode = doc.CreateElement("producto")
+            Dim nodoProducto As XmlNode = doc.CreateElement("productos")
 
             nodoId.InnerText = Me.Id
             nodoNombre.InnerText = Me.Nombre
@@ -54,13 +54,25 @@ Public Class categoria
             elementoCategoria.AppendChild(nodoNombre)
             elementoCategoria.AppendChild(nodoProducto)
 
-            doc.AppendChild(elementoCategoria)
+            doc.DocumentElement.AppendChild(elementoCategoria)
             doc.Save(rutaDatos)
         Catch ex As Exception
             Return False
         End Try
 
         Return True
+    End Function
+
+    Public Function existeId() As Boolean
+        Dim xml As New XmlDocument
+        xml.Load(rutaDatos)
+        For Each categoria As XmlNode In xml.DocumentElement.ChildNodes
+            If (categoria.Item("id").InnerText = Me.Id) Then
+                Return True
+            End If
+        Next
+
+        Return False
     End Function
 
 

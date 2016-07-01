@@ -1,11 +1,33 @@
 <?xml version="1.0"?>
-<usuario>
-  <id>6</id>
-  <nombre>jona</nombre>
-  <apellido>mac</apellido>
-  <cedula>234737432</cedula>
-  <email>natho</email>
-  <nickname>natho</nickname>
-  <password>1234</password>
-  <tipo>2</tipo>
-</usuario>
+<usuarios>
+  <usuario>
+    <id>6</id>
+    <nombre>jona</nombre>
+    <apellido>mac</apellido>
+    <cedula>234737432</cedula>
+    <email>natho</email>
+    <nickname>natho</nickname>
+    <password>1234</password>
+    <tipo>2</tipo>
+  </usuario>
+  <usuario>
+    <id>7</id>
+    <nombre>Robert</nombre>
+    <apellido>Macias</apellido>
+    <cedula>234737432</cedula>
+    <email>rmacias@gmail.com</email>
+    <nickname>admin</nickname>
+    <password>1234</password>
+    <tipo>1</tipo>
+  </usuario>
+  <usuario>
+    <id>1</id>
+    <nombre>Robert</nombre>
+    <apellido>Macías</apellido>
+    <cedula>0934222277</cedula>
+    <email>rsmacias@gmail.com</email>
+    <nickname>rsmacias</nickname>
+    <password>1234</password>
+    <tipo>2</tipo>
+  </usuario>
+</usuarios>

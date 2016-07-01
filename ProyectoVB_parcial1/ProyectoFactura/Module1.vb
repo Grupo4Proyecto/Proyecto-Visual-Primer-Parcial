@@ -21,17 +21,31 @@
         Do While continuar = "s"
             Console.Clear()
 
+            Console.WriteLine(vbTab & vbTab & vbTab & "==========================================")
+            Console.WriteLine(vbTab & vbTab & vbTab & "|      MANTENIMIENTO DE CATEGORIA        |")
+            Console.WriteLine(vbTab & vbTab & vbTab & "==========================================" & vbNewLine)
+
             Dim objCategoria As New categoria()
 
-            Console.WriteLine("Id: ")
-            objCategoria.Id = Console.ReadLine()
+            Do
+                If (objCategoria.existeId()) Then
+                    Console.WriteLine(vbTab & vbTab & vbTab & "Una categoria con dicho Id ya ha sido ingresada")
+                End If
 
-            Console.WriteLine("Nombre: ")
+                Console.Write(vbTab & vbTab & vbTab & "Id: ")
+                objCategoria.Id = Console.ReadLine()
+            Loop While (objCategoria.existeId())
+
+            
+
+           
+
+            Console.Write(vbTab & vbTab & vbTab & "Nombre : ")
             objCategoria.Nombre = Console.ReadLine()
 
             objCategoria.GuardarCategoria()
 
-            Console.WriteLine("categoria guardada")
+            Console.Write(vbTab & vbTab & vbTab & "Categoria guardada : ")
 
             Console.Write(vbTab & vbTab & vbTab & "Guardar otra categoria? [s/n]: ")
             continuar = Console.ReadLine()
@@ -39,7 +53,52 @@
     End Sub
 
     Public Sub agregarProducto()
-        Console.WriteLine("FUNCION POR DEFINIR")
+        Dim continuar As String = "s"
+
+        Do While continuar = "s"
+            Console.Clear()
+
+            Console.WriteLine(vbTab & vbTab & vbTab & "==========================================")
+            Console.WriteLine(vbTab & vbTab & vbTab & "|      MANTENIMIENTO DE CATEGORIA        |")
+            Console.WriteLine(vbTab & vbTab & vbTab & "==========================================" & vbNewLine)
+
+            Dim objArticulo As New articulo()
+
+            Console.Write(vbTab & vbTab & vbTab & "Id: ")
+            objArticulo.Id = Console.ReadLine()
+
+            Console.Write(vbTab & vbTab & vbTab & "Nombre : ")
+            objArticulo.Nombre = Console.ReadLine()
+
+            Console.Write(vbTab & vbTab & vbTab & "Marca : ")
+            objArticulo.Marca = Console.ReadLine()
+
+            Console.Write(vbTab & vbTab & vbTab & "Modelo : ")
+            objArticulo.Modelo = Console.ReadLine()
+
+            Console.Write(vbTab & vbTab & vbTab & "Precio : ")
+            objArticulo.Precio = Console.ReadLine()
+
+            Console.Write(vbTab & vbTab & vbTab & "Stock : ")
+            objArticulo.Stock = Console.ReadLine()
+
+            Console.Write(vbTab & vbTab & vbTab & "Aplica IVA [s/n] : ")
+            Dim input As String = Console.ReadLine()
+            objArticulo.AplicaIva = IIf(input = "s", True, False)
+
+            Console.Write(vbTab & vbTab & vbTab & "Descripcion : ")
+            objArticulo.Descripcion = Console.ReadLine()
+
+            Console.Write(vbTab & vbTab & vbTab & "Categoria : ")
+            objArticulo.Categoria.Id = Console.ReadLine()
+
+            objArticulo.GuardarArticulo()
+
+            Console.Write(vbTab & vbTab & vbTab & "Articulo guardado : ")
+
+            Console.Write(vbTab & vbTab & vbTab & "Guardar otro articulo? [s/n]: ")
+            continuar = Console.ReadLine()
+        Loop
     End Sub
 
     Public Sub agregarVendedor()

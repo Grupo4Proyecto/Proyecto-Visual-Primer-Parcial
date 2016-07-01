@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<articulos>
+  <articulo>
+    <id>1</id>
+    <nombre>Llantas1</nombre>
+    <marca>General Tires</marca>
+    <precio>200</precio>
+    <descripcion>Negras</descripcion>
+    <modelo>Patito</modelo>
+    <stock>180</stock>
+    <aplicaIva>True</aplicaIva>
+    <estado>&#x0;</estado>
+    <categoria>1</categoria>
+  </articulo>
+  <articulo>
+    <id>2</id>
+    <nombre>Radiador1</nombre>
+    <marca>Radia</marca>
+    <precio>30</precio>
+    <descripcion>Radiadores</descripcion>
+    <modelo>Pato2</modelo>
+    <stock>20</stock>
+    <aplicaIva>False</aplicaIva>
+    <estado>&#x0;</estado>
+    <categoria>2</categoria>
+  </articulo>
+</articulos>

@@ -63,44 +63,44 @@ Public Class empleado
     End Function
 
     Public Function GuardarEmpleado() As Boolean
+        Try
+            Dim doc As XmlDocument = New XmlDocument
+            doc.Load(rutaDatos)
 
-        Dim doc As XmlDocument = New XmlDocument
-        'doc.Load(rutaDatos)
-        Dim dec As XmlDeclaration = doc.CreateXmlDeclaration("1.0", Nothing, Nothing)
-        doc.AppendChild(dec)
-        'Dim nodoList As XmlNodeList
-        Dim elementoEmpleado As XmlElement = doc.CreateElement("usuario")
-        Dim nodoId As XmlNode = doc.CreateElement("id")
-        Dim nodoNombre As XmlNode = doc.CreateElement("nombre")
-        Dim nodoApellido As XmlNode = doc.CreateElement("apellido")
-        Dim nodoCedula As XmlNode = doc.CreateElement("cedula")
-        Dim nodoEmail As XmlNode = doc.CreateElement("email")
-        Dim nodoNick As XmlNode = doc.CreateElement("nickname")
-        Dim nodoPass As XmlNode = doc.CreateElement("password")
-        Dim nodoTipo As XmlNode = doc.CreateElement("tipo")
-        nodoId.InnerText = Me.Id
-        nodoNombre.InnerText = Me.Nombre
-        nodoApellido.InnerText = Me.Apellido
-        nodoCedula.InnerText = Me.Cedula
-        nodoEmail.InnerText = Me.Email
-        nodoNick.InnerText = Me.Usuario
-        nodoPass.InnerText = Me.Clave
-        nodoTipo.InnerText = tipo.vendedor
+            Dim elementoEmpleado As XmlElement = doc.CreateElement("usuario")
+            Dim nodoId As XmlNode = doc.CreateElement("id")
+            Dim nodoNombre As XmlNode = doc.CreateElement("nombre")
+            Dim nodoApellido As XmlNode = doc.CreateElement("apellido")
+            Dim nodoCedula As XmlNode = doc.CreateElement("cedula")
+            Dim nodoEmail As XmlNode = doc.CreateElement("email")
+            Dim nodoNick As XmlNode = doc.CreateElement("nickname")
+            Dim nodoPass As XmlNode = doc.CreateElement("password")
+            Dim nodoTipo As XmlNode = doc.CreateElement("tipo")
+            nodoId.InnerText = Me.Id
+            nodoNombre.InnerText = Me.Nombre
+            nodoApellido.InnerText = Me.Apellido
+            nodoCedula.InnerText = Me.Cedula
+            nodoEmail.InnerText = Me.Email
+            nodoNick.InnerText = Me.Usuario
+            nodoPass.InnerText = Me.Clave
+            nodoTipo.InnerText = tipo.vendedor
 
-        elementoEmpleado.AppendChild(nodoId)
-        elementoEmpleado.AppendChild(nodoNombre)
-        elementoEmpleado.AppendChild(nodoApellido)
-        elementoEmpleado.AppendChild(nodoCedula)
-        elementoEmpleado.AppendChild(nodoEmail)
-        elementoEmpleado.AppendChild(nodoNick)
-        elementoEmpleado.AppendChild(nodoPass)
-        elementoEmpleado.AppendChild(nodoTipo)
+            elementoEmpleado.AppendChild(nodoId)
+            elementoEmpleado.AppendChild(nodoNombre)
+            elementoEmpleado.AppendChild(nodoApellido)
+            elementoEmpleado.AppendChild(nodoCedula)
+            elementoEmpleado.AppendChild(nodoEmail)
+            elementoEmpleado.AppendChild(nodoNick)
+            elementoEmpleado.AppendChild(nodoPass)
+            elementoEmpleado.AppendChild(nodoTipo)
 
-        doc.AppendChild(elementoEmpleado)
-        doc.Save(rutaDatos)
-
+            doc.DocumentElement.AppendChild(elementoEmpleado)
+            doc.Save(rutaDatos)
+        Catch ex As Exception
+            Return False
+        End Try
+        
         Return True
-
     End Function
 
 End Class

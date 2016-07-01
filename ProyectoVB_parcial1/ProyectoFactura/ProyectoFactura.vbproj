@@ -115,6 +115,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DATOS\articulos.xml" />
     <Content Include="DATOS\categorias.xml" />
     <Content Include="DATOS\usuarios.xml" />
   </ItemGroup>

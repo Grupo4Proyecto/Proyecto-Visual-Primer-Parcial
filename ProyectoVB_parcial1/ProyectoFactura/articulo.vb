@@ -1,7 +1,9 @@
 ﻿Imports System.Xml
+Imports System.Configuration
 
 Public Class articulo
     Private _id As Integer
+    Public rutaDatos As String = ConfigurationManager.AppSettings("archivoArticulos")
     Public Property Id() As Integer
         Get
             Return _id
@@ -93,7 +95,7 @@ Public Class articulo
     End Property
 
 
-    Private _categoria As categoria
+    Private _categoria As New categoria
     Public Property Categoria() As categoria
         Get
             Return _categoria
@@ -106,6 +108,59 @@ Public Class articulo
     Public Function GenerarXml(xmlDoc As XmlDocument)
         Dim articulo As XmlNode = xmlDoc.CreateElement("categoria")
         Return articulo
+    End Function
+
+    Public Function GuardarArticulo() As Boolean
+        Try
+
+            Dim doc As New XmlDocument
+            doc.Load(rutaDatos)
+
+            Dim elementoArticulo As XmlElement = doc.CreateElement("articulo")
+
+            Dim nodoId As XmlNode = doc.CreateElement("id")
+            Dim nodoNombre As XmlNode = doc.CreateElement("nombre")
+            Dim nodoMarca As XmlNode = doc.CreateElement("marca")
+            Dim nodoPrecio As XmlNode = doc.CreateElement("precio")
+            Dim nodoDescripcion As XmlNode = doc.CreateElement("descripcion")
+            Dim nodoModelo As XmlNode = doc.CreateElement("modelo")
+            Dim nodoStock As XmlNode = doc.CreateElement("stock")
+            Dim nodoAplicaIva As XmlNode = doc.CreateElement("aplicaIva")
+            Dim nodoEstado As XmlNode = doc.CreateElement("estado")
+            Dim nodoCategoria As XmlNode = doc.CreateElement("categoria")
+
+            nodoId.InnerText = Me.Id
+            nodoNombre.InnerText = Me.Nombre
+            nodoMarca.InnerText = Me.Marca
+            nodoPrecio.InnerText = Me.Precio
+            nodoDescripcion.InnerText = Me.Descripcion
+            nodoModelo.InnerText = Me.Modelo
+            nodoStock.InnerText = Me.Stock
+            nodoAplicaIva.InnerText = Me.AplicaIva
+            nodoEstado.InnerText = Me.Estado
+            nodoCategoria.InnerText = Me.Categoria.Id
+
+            elementoArticulo.AppendChild(nodoId)
+            elementoArticulo.AppendChild(nodoNombre)
+            elementoArticulo.AppendChild(nodoMarca)
+            elementoArticulo.AppendChild(nodoPrecio)
+            elementoArticulo.AppendChild(nodoDescripcion)
+            elementoArticulo.AppendChild(nodoModelo)
+            elementoArticulo.AppendChild(nodoStock)
+            elementoArticulo.AppendChild(nodoAplicaIva)
+            elementoArticulo.AppendChild(nodoEstado)
+            elementoArticulo.AppendChild(nodoCategoria)
+
+            doc.DocumentElement.AppendChild(elementoArticulo)
+            doc.Save(rutaDatos)
+
+
+
+
+            Return True
+        Catch ex As Exception
+            Return False
+        End Try
     End Function
 
 End Class
