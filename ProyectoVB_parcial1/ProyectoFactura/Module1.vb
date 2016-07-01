@@ -20,7 +20,7 @@
 
         Do While continuar = "s"
             Console.Clear()
-
+            Console.WriteLine("" & vbNewLine)
             Console.WriteLine(vbTab & vbTab & vbTab & "==========================================")
             Console.WriteLine(vbTab & vbTab & vbTab & "|      MANTENIMIENTO DE CATEGORIA        |")
             Console.WriteLine(vbTab & vbTab & vbTab & "==========================================" & vbNewLine)
@@ -29,7 +29,7 @@
 
             Do
                 If (objCategoria.existeId()) Then
-                    Console.WriteLine(vbTab & vbTab & vbTab & "Una categoria con dicho Id ya ha sido ingresada")
+                    Console.WriteLine(vbTab & vbTab & vbTab & "Una categoría con dicho Id ya ha sido ingresada")
                 End If
 
                 Console.Write(vbTab & vbTab & vbTab & "Id: ")
@@ -45,9 +45,9 @@
 
             objCategoria.GuardarCategoria()
 
-            Console.Write(vbTab & vbTab & vbTab & "Categoria guardada : ")
+            Console.Write(vbTab & vbTab & vbTab & "Categoría guardada exitosamente" & vbNewLine & vbNewLine)
 
-            Console.Write(vbTab & vbTab & vbTab & "Guardar otra categoria? [s/n]: ")
+            Console.Write(vbTab & vbTab & vbTab & "¿Guardar otra categoría? [s/n]: ")
             continuar = Console.ReadLine()
         Loop
     End Sub
@@ -57,10 +57,11 @@
 
         Do While continuar = "s"
             Console.Clear()
-
+            Console.WriteLine("" & vbNewLine)
             Console.WriteLine(vbTab & vbTab & vbTab & "==========================================")
             Console.WriteLine(vbTab & vbTab & vbTab & "|      MANTENIMIENTO DE CATEGORIA        |")
             Console.WriteLine(vbTab & vbTab & vbTab & "==========================================" & vbNewLine)
+
 
             Dim objArticulo As New articulo()
 
@@ -86,39 +87,67 @@
             Dim input As String = Console.ReadLine()
             objArticulo.AplicaIva = IIf(input = "s", True, False)
 
-            Console.Write(vbTab & vbTab & vbTab & "Descripcion : ")
+            Console.Write(vbTab & vbTab & vbTab & "Descripción : ")
             objArticulo.Descripcion = Console.ReadLine()
 
-            Console.Write(vbTab & vbTab & vbTab & "Categoria : ")
+            Console.Write(vbTab & vbTab & vbTab & "Categoría : ")
             objArticulo.Categoria.Id = Console.ReadLine()
 
             objArticulo.GuardarArticulo()
 
-            Console.Write(vbTab & vbTab & vbTab & "Articulo guardado : ")
+            Console.Write(vbTab & vbTab & vbTab & "Artículo guardado exitosamente" & vbNewLine & vbNewLine)
 
-            Console.Write(vbTab & vbTab & vbTab & "Guardar otro articulo? [s/n]: ")
+            Console.Write(vbTab & vbTab & vbTab & "¿Guardar otro artículo? [s/n]: ")
             continuar = Console.ReadLine()
         Loop
     End Sub
 
     Public Sub agregarVendedor()
-        Dim empleadoNuevo As empleado = New empleado
-        Console.Write("Ingrese Id")
-        empleadoNuevo.Id = Console.ReadLine
-        Console.Write("Ingrese Nombre")
-        empleadoNuevo.Nombre = Console.ReadLine
-        Console.Write("Ingrese Apellido")
-        empleadoNuevo.Apellido = Console.ReadLine
-        Console.Write("Ingrese Cedula")
-        empleadoNuevo.Cedula = Console.ReadLine
-        Console.Write("Ingrese Email")
-        empleadoNuevo.Email = Console.ReadLine
-        Console.Write("Ingrese nombre User")
-        empleadoNuevo.Usuario = Console.ReadLine
-        Console.Write("Ingrese Password")
-        empleadoNuevo.Clave = Console.ReadLine
-        'Console.WriteLine("FUNCION POR DEFINIR")
-        empleadoNuevo.GuardarEmpleado()
+        Dim continuar As String = "s"
+
+        Do While continuar = "s"
+            Console.Clear()
+            Console.WriteLine("" & vbNewLine)
+            Console.WriteLine(vbTab & vbTab & vbTab & "==========================================")
+            Console.WriteLine(vbTab & vbTab & vbTab & "|      MANTENIMIENTO DE VENDEDORES       |")
+            Console.WriteLine(vbTab & vbTab & vbTab & "==========================================" & vbNewLine)
+
+            Dim empleadoNuevo As empleado = New empleado
+
+            
+            Console.Write("Ingrese Id: ")
+            empleadoNuevo.Id = Console.ReadLine
+
+            Console.Write("Ingrese Nombre: ")
+            empleadoNuevo.Nombre = Console.ReadLine
+
+            Console.Write("Ingrese Apellido: ")
+            empleadoNuevo.Apellido = Console.ReadLine
+
+            Console.Write("Ingrese Cédula: ")
+            empleadoNuevo.Cedula = Console.ReadLine
+
+            Console.Write("Ingrese Email: ")
+            empleadoNuevo.Email = Console.ReadLine
+
+            Console.Write("Ingrese nombre User: ")
+            empleadoNuevo.Usuario = Console.ReadLine
+
+            Console.Write("Ingrese Password: ")
+            empleadoNuevo.Clave = Console.ReadLine
+
+            empleadoNuevo.GuardarEmpleado()
+            Console.Write("" & vbNewLine)
+            Console.Write(vbTab & vbTab & vbTab & "Vendedor registrado exitosamente" & vbNewLine & vbNewLine)
+
+            Console.Write(vbTab & vbTab & vbTab & "¿Registrar otro vendedor? [s/n]: ")
+            continuar = Console.ReadLine()
+        Loop
+
+
+
+
+
     End Sub
 
     Public Sub salir()
@@ -130,11 +159,11 @@
 
         While True
             Console.Clear()
-            Console.WriteLine(vbTab & "--------------------------------------------------------------" & vbNewLine)
+            Console.WriteLine("" & vbNewLine)
             Console.WriteLine(vbTab & vbTab & vbTab & "==============================")
-            Console.WriteLine(vbTab & vbTab & vbTab & "|      MENÚ ADMIN            |")
+            Console.WriteLine(vbTab & vbTab & vbTab & "|          MENÚ ADMIN        |")
             Console.WriteLine(vbTab & vbTab & vbTab & "==============================" & vbNewLine)
-            Console.WriteLine(vbTab & vbTab & vbTab & "1.- Agregar categoria" & vbNewLine)
+            Console.WriteLine(vbTab & vbTab & vbTab & "1.- Agregar categoría" & vbNewLine)
             Console.WriteLine(vbTab & vbTab & vbTab & "2.- Agregar producto" & vbNewLine)
             Console.WriteLine(vbTab & vbTab & vbTab & "3.- Agregar Vendedor" & vbNewLine)
             Console.WriteLine(vbTab & vbTab & vbTab & "4.- Salir" & vbNewLine)
@@ -152,7 +181,7 @@
                 Case 4
                     Exit While
                 Case Else
-                    Console.WriteLine("Opcion no existe. Escriba bien.")
+                    Console.WriteLine("Opción no existe. Escriba bien.")
             End Select
         End While
 
@@ -162,13 +191,12 @@
         Console.WriteLine("FUNCION POR DEFINIR")
     End Sub
 
-
     Public Sub mostrarMenuVendedor()
         Dim opcion As String = String.Empty
 
         While True
             Console.Clear()
-            Console.WriteLine(vbTab & "--------------------------------------------------------------" & vbNewLine)
+            Console.WriteLine("" & vbNewLine)
             Console.WriteLine(vbTab & vbTab & vbTab & "==============================")
             Console.WriteLine(vbTab & vbTab & vbTab & "|         MENÚ VENDEDOR      |")
             Console.WriteLine(vbTab & vbTab & vbTab & "==============================" & vbNewLine)
@@ -184,7 +212,7 @@
                 Case 2
                     Exit While
                 Case Else
-                    Console.WriteLine("Opcion no existe. Escriba bien.")
+                    Console.WriteLine("Opción no existe. Escriba bien.")
             End Select
         End While
 
@@ -198,7 +226,7 @@
 
         While True
             Console.Clear()
-            Console.WriteLine(vbTab & "--------------------------------------------------------------" & vbNewLine)
+            Console.WriteLine("" & vbNewLine)
             Console.WriteLine(vbTab & vbTab & vbTab & "==============================")
             Console.WriteLine(vbTab & vbTab & vbTab & "|            LOGIN            |")
             Console.WriteLine(vbTab & vbTab & vbTab & "==============================" & vbNewLine)

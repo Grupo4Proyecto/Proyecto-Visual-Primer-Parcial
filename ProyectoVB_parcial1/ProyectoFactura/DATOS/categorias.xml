@@ -30,4 +30,29 @@
     <nombre>bujia</nombre>
     <productos />
   </categoria>
+  <categoria>
+    <id>5</id>
+    <nombre>Aros</nombre>
+    <productos />
+  </categoria>
+  <categoria>
+    <id>6</id>
+    <nombre>Faros</nombre>
+    <productos />
+  </categoria>
+  <categoria>
+    <id>7</id>
+    <nombre>Rodamientos</nombre>
+    <productos />
+  </categoria>
+  <categoria>
+    <id>8</id>
+    <nombre>Retenedores</nombre>
+    <productos />
+  </categoria>
+  <categoria>
+    <id>9</id>
+    <nombre>Bandas</nombre>
+    <productos />
+  </categoria>
 </categorias>
