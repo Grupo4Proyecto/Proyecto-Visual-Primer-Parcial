@@ -25,7 +25,7 @@
     <categoria>2</categoria>
   </articulo>
   <articulo>
-    <id>2</id>
+    <id>3</id>
     <nombre>Rodamiento cónico</nombre>
     <marca>SKF</marca>
     <precio>90</precio>
@@ -37,7 +37,7 @@
     <categoria>7</categoria>
   </articulo>
   <articulo>
-    <id>8</id>
+    <id>4</id>
     <nombre>Banda1</nombre>
     <marca>BN</marca>
     <precio>10</precio>

@@ -177,57 +177,64 @@ Public Class factura
     Public Sub ElegirArticuloAFacturar()
         Dim articulo As String
         Dim cantidad As Integer
-        Dim continuar As String = "n"
+        Dim detalleFatura As New detalleFactura()
         Dim xmlDom As New XmlDocument()
         xmlDom.Load(ConfigurationManager.AppSettings("archivoArticulos"))
         Dim listaDeArticulos As XmlNodeList = xmlDom.GetElementsByTagName("articulos")
 
 
-        Do While continuar = "n"
-            For Each nodoArticulo As XmlNode In listaDeArticulos
-                For Each elementosArticulo As XmlNode In nodoArticulo.ChildNodes
-                    Dim id As String = elementosArticulo.Item("id").InnerText
-                    Dim nombre As String = elementosArticulo.Item("nombre").InnerText
-                    Console.Write(vbTab & vbTab & vbTab & id)
-                    Console.WriteLine(nombre)
-                Next
-                
 
+        For Each nodoArticulo As XmlNode In listaDeArticulos
+            For Each elementosArticulo As XmlNode In nodoArticulo.ChildNodes
+                Dim id As String = elementosArticulo.Item("id").InnerText
+                Dim nombre As String = elementosArticulo.Item("nombre").InnerText
+                Console.Write(vbTab & vbTab & vbTab & id)
+                Console.WriteLine(nombre)
             Next
-            Console.WriteLine(vbTab & vbTab & vbTab & "Ingrese Id del articulo")
-            articulo = Console.ReadLine
 
-            For Each articulos As XmlNode In listaDeArticulos
-                For Each elementosDeArticulos As XmlNode In articulos.ChildNodes
-                    Try
 
-                        Console.WriteLine("ingrese cantidad")
-                        cantidad = Console.ReadLine()
-                        'cantidad < articulos.Item("stock").InnerText
+        Next
 
-                        Dim detalleFatura As New detalleFactura()
+
+
+        Console.WriteLine(vbTab & vbTab & vbTab & "Ingrese Id del articulo")
+        articulo = Console.ReadLine()
+
+        Console.WriteLine("ingrese cantidad")
+        cantidad = Console.ReadLine()
+
+        For Each articulos As XmlNode In listaDeArticulos
+            For Each elementosDeArticulos As XmlNode In articulos.ChildNodes
+                Try
+                    Console.WriteLine(articulo & "art")
+                    'cantidad < articulos.Item("stock").InnerText
+
+                    If (elementosDeArticulos.Item("id").InnerText = articulo) Then
+                        Console.WriteLine(articulos.Item("id").InnerText)
                         detalleFatura.Cantidad = cantidad
+                        detalleFatura.Descripcion = articulos.Item("nombre").InnerText
                         detalleFatura.PrecioUnit = elementosDeArticulos.Item("precio").InnerText
                         Detalle.Add(detalleFatura)
+                        Console.WriteLine(detalleFatura.Descripcion)
                         Console.WriteLine("funciona bien")
+                    Else
+                        Console.WriteLine(elementosDeArticulos.Item("id").InnerText)
+                    End If
 
 
+                Catch ex As Exception
 
-                    Catch ex As Exception
-
-                    End Try
-                    
-                Next
+                End Try
 
             Next
-            Console.WriteLine("desea continuar S para facturar N para agregarmas productos")
-            continuar = Console.ReadLine()
 
-            
-        Loop
-        GuardarFactura()
+        Next
+        
+
+
 
     End Sub
 
 
+    
 End Class

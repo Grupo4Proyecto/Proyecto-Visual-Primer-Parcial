@@ -189,8 +189,33 @@
 
     Public Sub Facturar()
         'Console.WriteLine("FUNCION POR DEFINIR")
+
+        Dim continuar As String = "s"
         Dim factura As New factura
-        factura.ElegirArticuloAFacturar()
+        Do While continuar = "s"
+
+            factura.ElegirArticuloAFacturar()
+
+            Console.WriteLine("desea agregar mas productor S o facturar N")
+            continuar = Console.ReadLine()
+
+        Loop
+        Console.WriteLine("Ingrese Id de la factura")
+        factura.Id = Console.ReadLine()
+        Console.WriteLine("Ingrese numerode factura")
+        factura.NumeroFactura = Console.ReadLine()
+        Console.WriteLine("INgrese Nombre del cliente")
+        factura.NombreCliente = Console.ReadLine()
+        Console.WriteLine("INgrese ruc del cliente")
+        factura.Ruc = Console.ReadLine()
+        Console.WriteLine("INgrese telefono del cliente")
+        factura.Telefono = Console.ReadLine()
+        Console.WriteLine("INgrese direccion del cliente")
+        factura.Direccion = Console.ReadLine()
+        Console.WriteLine("Ingrese fecha de emosion")
+        factura.FechaEmision = Console.ReadLine()
+        factura.GuardarFactura()
+
     End Sub
 
     Public Sub mostrarMenuVendedor()
