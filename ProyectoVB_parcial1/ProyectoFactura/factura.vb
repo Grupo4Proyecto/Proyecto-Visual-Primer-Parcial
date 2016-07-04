@@ -37,6 +37,16 @@ Public Class factura
         End Set
     End Property
 
+    Private _provincia As String
+    Public Property provincia() As String
+        Get
+            Return _provincia
+        End Get
+        Set(ByVal value As String)
+            _provincia = value
+        End Set
+    End Property
+
 
     Private _ruc As String
     Public Property Ruc() As String
@@ -134,6 +144,7 @@ Public Class factura
             Dim nodoNombreCliente As XmlNode = xmlDom.CreateElement("nombreCliente")
             Dim nodoRuc As XmlNode = xmlDom.CreateElement("ruc")
             Dim nodoTelefono As XmlNode = xmlDom.CreateElement("telefono")
+            Dim nodoProvincia As XmlNode = xmlDom.CreateElement("provincia")
             Dim nodoDieccion As XmlNode = xmlDom.CreateElement("direccion")
             Dim nodoFechaEmision As XmlNode = xmlDom.CreateElement("fechaEmision")
             Dim nodoSubtotal As XmlNode = xmlDom.CreateElement("subtotal")
@@ -141,11 +152,13 @@ Public Class factura
             Dim nodoTotalAPagar As XmlNode = xmlDom.CreateElement("pagoTotal")
             Dim nodoDescripcion As XmlNode = xmlDom.CreateElement("descripcion")
 
+
             nodoId.InnerText = Me.Id
             nodoNumero.InnerText = Me.NumeroFactura
             nodoNombreCliente.InnerText = Me.NombreCliente
             nodoRuc.InnerText = Me.Ruc
             nodoTelefono.InnerText = Me.Telefono
+            nodoProvincia.InnerText = Me.provincia
             nodoDieccion.InnerText = Me.Direccion
             nodoFechaEmision.InnerText = Me.FechaEmision
             nodoSubtotal.InnerText = Me.SubTotal
@@ -157,6 +170,7 @@ Public Class factura
             elememtoFactura.AppendChild(nodoNombreCliente)
             elememtoFactura.AppendChild(nodoRuc)
             elememtoFactura.AppendChild(nodoTelefono)
+            elememtoFactura.AppendChild(nodoProvincia)
             elememtoFactura.AppendChild(nodoDieccion)
             elememtoFactura.AppendChild(nodoFechaEmision)
             elememtoFactura.AppendChild(nodoSubtotal)
@@ -215,9 +229,19 @@ Public Class factura
                         detalleFatura.Descripcion = elementosDeArticulos.Item("nombre").InnerText
                         detalleFatura.PrecioUnit = elementosDeArticulos.Item("precio").InnerText
                         Detalle.Add(detalleFatura)
+                        Me.SubTotal = cantidad * detalleFatura.PrecioUnit
+                        If (Me.provincia = "Manabi" Or Me.provincia = "manabi" Or Me.provincia = "Esmeraldas" Or Me.provincia = "esmeraldas") Then
+                            Me.TotalIva = Me.SubTotal * 0.12
+                        Else
+                            Me.TotalIva = Me.SubTotal * 0.14
+                        End If
+
+                        Me.TotalPagar = SubTotal + TotalIva
+
+
                         Console.WriteLine(detalleFatura.Descripcion)
                         Console.WriteLine("funciona bien")
-                    
+
                     End If
 
 

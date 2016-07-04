@@ -189,7 +189,7 @@
 
     Public Sub Facturar()
         'Console.WriteLine("FUNCION POR DEFINIR")
-
+        Dim provincia As New provincia()
         Dim continuar As String = "s"
         Dim factura As New factura
         Do While continuar = "s"
@@ -210,6 +210,8 @@
         factura.Ruc = Console.ReadLine()
         Console.WriteLine("INgrese telefono del cliente")
         factura.Telefono = Console.ReadLine()
+        Console.WriteLine("INgrese provincia")
+        factura.provincia = Console.ReadLine()
         Console.WriteLine("INgrese direccion del cliente")
         factura.Direccion = Console.ReadLine()
         Console.WriteLine("Ingrese fecha de emosion")

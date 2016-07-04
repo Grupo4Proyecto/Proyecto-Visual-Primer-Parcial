@@ -1,3 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <facturas>
+  <factura>
+    <id>1</id>
+    <numeroFactura>12345</numeroFactura>
+    <nombreCliente>jonathan</nombreCliente>
+    <ruc>1234567890</ruc>
+    <telefono>0934832</telefono>
+    <provincia>manabi</provincia>
+    <direccion>el condor</direccion>
+    <fechaEmision>09/09/2012</fechaEmision>
+    <subtotal>600</subtotal>
+    <totalIva>84</totalIva>
+    <pagoTotal>684</pagoTotal>
+  </factura>
+  <factura>
+    <id>2</id>
+    <numeroFactura>123455422</numeroFactura>
+    <nombreCliente>jonathan</nombreCliente>
+    <ruc>1234567890</ruc>
+    <telefono>0923432</telefono>
+    <provincia>Manabi</provincia>
+    <direccion>el condor</direccion>
+    <fechaEmision>09/12/2015</fechaEmision>
+    <subtotal>150</subtotal>
+    <totalIva>21</totalIva>
+    <pagoTotal>171</pagoTotal>
+  </factura>
 </facturas>
