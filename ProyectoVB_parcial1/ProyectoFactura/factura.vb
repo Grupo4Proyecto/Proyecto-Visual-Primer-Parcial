@@ -206,19 +206,18 @@ Public Class factura
         For Each articulos As XmlNode In listaDeArticulos
             For Each elementosDeArticulos As XmlNode In articulos.ChildNodes
                 Try
-                    Console.WriteLine(articulo & "art")
+
                     'cantidad < articulos.Item("stock").InnerText
 
                     If (elementosDeArticulos.Item("id").InnerText = articulo) Then
-                        Console.WriteLine(articulos.Item("id").InnerText)
+
                         detalleFatura.Cantidad = cantidad
-                        detalleFatura.Descripcion = articulos.Item("nombre").InnerText
+                        detalleFatura.Descripcion = elementosDeArticulos.Item("nombre").InnerText
                         detalleFatura.PrecioUnit = elementosDeArticulos.Item("precio").InnerText
                         Detalle.Add(detalleFatura)
                         Console.WriteLine(detalleFatura.Descripcion)
                         Console.WriteLine("funciona bien")
-                    Else
-                        Console.WriteLine(elementosDeArticulos.Item("id").InnerText)
+                    
                     End If
 
 
