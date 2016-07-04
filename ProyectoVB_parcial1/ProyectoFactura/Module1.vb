@@ -191,7 +191,8 @@
         'Console.WriteLine("FUNCION POR DEFINIR")
         Dim provincia As New provincia()
         Dim continuar As String = "s"
-        Dim factura As New factura
+        Dim factura As New factura()
+        Dim detalleFatura As New detalleFactura()
         Do While continuar = "s"
 
             factura.ElegirArticuloAFacturar()
@@ -216,6 +217,16 @@
         factura.Direccion = Console.ReadLine()
         Console.WriteLine("Ingrese fecha de emosion")
         factura.FechaEmision = Console.ReadLine()
+
+        factura.SubTotal = factura.cantidad * factura.detalleFatura.PrecioUnit
+
+        If (factura.provincia = "Manabi" Or factura.provincia = "manabi" Or factura.provincia = "Esmeraldas" Or factura.provincia = "esmeraldas") Then
+            factura.TotalIva = factura.SubTotal * 0.12
+        Else
+            factura.TotalIva = factura.SubTotal * 0.14
+        End If
+
+        factura.TotalPagar = factura.SubTotal + factura.TotalIva
         factura.GuardarFactura()
 
     End Sub

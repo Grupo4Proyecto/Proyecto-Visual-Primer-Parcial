@@ -26,4 +26,30 @@
     <totalIva>21</totalIva>
     <pagoTotal>171</pagoTotal>
   </factura>
+  <factura>
+    <id>3</id>
+    <numeroFactura>12347373</numeroFactura>
+    <nombreCliente>francia</nombreCliente>
+    <ruc>029348328</ruc>
+    <telefono>09274732</telefono>
+    <provincia>manabi</provincia>
+    <direccion>jipijapana y la novina</direccion>
+    <fechaEmision>09/10/2016</fechaEmision>
+    <subtotal>120</subtotal>
+    <totalIva>14,4</totalIva>
+    <pagoTotal>134,4</pagoTotal>
+  </factura>
+  <factura>
+    <id>4</id>
+    <numeroFactura>239394329</numeroFactura>
+    <nombreCliente>leslie</nombreCliente>
+    <ruc>4394923</ruc>
+    <telefono>043824832</telefono>
+    <provincia>guayas</provincia>
+    <direccion>elcondor</direccion>
+    <fechaEmision>03/04/2016</fechaEmision>
+    <subtotal>600</subtotal>
+    <totalIva>84</totalIva>
+    <pagoTotal>684</pagoTotal>
+  </factura>
 </facturas>

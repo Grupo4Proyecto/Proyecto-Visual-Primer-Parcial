@@ -3,6 +3,38 @@ Imports System.Xml
 
 Public Class factura
 
+    Public detalleFatura As New detalleFactura()
+
+    Private _precioUni As Integer
+    Public Property procioUni() As Integer
+        Get
+            Return _precioUni
+        End Get
+        Set(ByVal value As Integer)
+            _precioUni = value
+        End Set
+    End Property
+
+    Private _cantidad As String
+    Public Property cantidad() As String
+        Get
+            Return _cantidad
+        End Get
+        Set(ByVal value As String)
+            _cantidad = value
+        End Set
+    End Property
+
+    Private _articulo As String
+    Public Property articulo() As String
+        Get
+            Return _articulo
+        End Get
+        Set(ByVal value As String)
+            _articulo = value
+        End Set
+    End Property
+
     Private rutaDatos As String = ConfigurationManager.AppSettings("archivoFacturas")
 
 
@@ -182,16 +214,15 @@ Public Class factura
         Catch ex As Exception
             Return False
         End Try
-        
+
         Return True
 
     End Function
 
 
     Public Sub ElegirArticuloAFacturar()
-        Dim articulo As String
-        Dim cantidad As Integer
-        Dim detalleFatura As New detalleFactura()
+
+
         Dim xmlDom As New XmlDocument()
         xmlDom.Load(ConfigurationManager.AppSettings("archivoArticulos"))
         Dim listaDeArticulos As XmlNodeList = xmlDom.GetElementsByTagName("articulos")
@@ -212,10 +243,10 @@ Public Class factura
 
 
         Console.WriteLine(vbTab & vbTab & vbTab & "Ingrese Id del articulo")
-        articulo = Console.ReadLine()
+        Me.articulo = Console.ReadLine()
 
         Console.WriteLine("ingrese cantidad")
-        cantidad = Console.ReadLine()
+        Me.cantidad = Console.ReadLine()
 
         For Each articulos As XmlNode In listaDeArticulos
             For Each elementosDeArticulos As XmlNode In articulos.ChildNodes
@@ -223,20 +254,14 @@ Public Class factura
 
                     'cantidad < articulos.Item("stock").InnerText
 
-                    If (elementosDeArticulos.Item("id").InnerText = articulo) Then
+                    If (elementosDeArticulos.Item("id").InnerText = Me.articulo) Then
 
-                        detalleFatura.Cantidad = cantidad
+                        detalleFatura.Cantidad = Me.cantidad
                         detalleFatura.Descripcion = elementosDeArticulos.Item("nombre").InnerText
                         detalleFatura.PrecioUnit = elementosDeArticulos.Item("precio").InnerText
+                        Me._precioUni = detalleFatura.PrecioUnit
                         Detalle.Add(detalleFatura)
-                        Me.SubTotal = cantidad * detalleFatura.PrecioUnit
-                        If (Me.provincia = "Manabi" Or Me.provincia = "manabi" Or Me.provincia = "Esmeraldas" Or Me.provincia = "esmeraldas") Then
-                            Me.TotalIva = Me.SubTotal * 0.12
-                        Else
-                            Me.TotalIva = Me.SubTotal * 0.14
-                        End If
 
-                        Me.TotalPagar = SubTotal + TotalIva
 
 
                         Console.WriteLine(detalleFatura.Descripcion)
@@ -252,12 +277,12 @@ Public Class factura
             Next
 
         Next
-        
+
 
 
 
     End Sub
 
 
-    
+
 End Class
