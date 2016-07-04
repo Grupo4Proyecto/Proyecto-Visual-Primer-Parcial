@@ -25,12 +25,12 @@ Public Class factura
         End Set
     End Property
 
-    Private _articulo As String
-    Public Property articulo() As String
+    Private _articulo As New List(Of articulo)
+    Public Property articulo() As List(Of articulo)
         Get
             Return _articulo
         End Get
-        Set(ByVal value As String)
+        Set(ByVal value As List(Of articulo))
             _articulo = value
         End Set
     End Property
@@ -242,10 +242,13 @@ Public Class factura
 
 
 
-        Console.WriteLine(vbTab & vbTab & vbTab & "Ingrese Id del articulo")
-        Me.articulo = Console.ReadLine()
+        Console.Write(vbTab & vbTab & vbTab & "Ingrese Id del articulo: ")
+        Dim articuloTmp As New articulo
+        articuloTmp.Id = Console.ReadLine()
+        Me.articulo.Add(articuloTmp)
 
-        Console.WriteLine("ingrese cantidad")
+
+        Console.Write(vbTab & vbTab & vbTab & "ingrese cantidad: ")
         Me.cantidad = Console.ReadLine()
 
         For Each articulos As XmlNode In listaDeArticulos
@@ -253,21 +256,20 @@ Public Class factura
                 Try
 
                     'cantidad < articulos.Item("stock").InnerText
+                    For Each articuloTemporal As articulo In articulo
+                        If (elementosDeArticulos.Item("id").InnerText = articuloTemporal.Id) Then
+                            detalleFatura.Cantidad = Me.cantidad
+                            detalleFatura.Descripcion = elementosDeArticulos.Item("nombre").InnerText
+                            detalleFatura.PrecioUnit = elementosDeArticulos.Item("precio").InnerText
+                            Me._precioUni = detalleFatura.PrecioUnit
 
-                    If (elementosDeArticulos.Item("id").InnerText = Me.articulo) Then
-
-                        detalleFatura.Cantidad = Me.cantidad
-                        detalleFatura.Descripcion = elementosDeArticulos.Item("nombre").InnerText
-                        detalleFatura.PrecioUnit = elementosDeArticulos.Item("precio").InnerText
-                        Me._precioUni = detalleFatura.PrecioUnit
-                        Detalle.Add(detalleFatura)
+                            Detalle.Add(detalleFatura)
 
 
 
-                        Console.WriteLine(detalleFatura.Descripcion)
-                        Console.WriteLine("funciona bien")
-
-                    End If
+                            Console.WriteLine(detalleFatura.Descripcion)
+                        End If
+                    Next
 
 
                 Catch ex As Exception

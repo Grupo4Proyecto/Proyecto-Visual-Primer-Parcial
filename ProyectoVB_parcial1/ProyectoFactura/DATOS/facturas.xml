@@ -52,4 +52,56 @@
     <totalIva>84</totalIva>
     <pagoTotal>684</pagoTotal>
   </factura>
+  <factura>
+    <id>6</id>
+    <numeroFactura>9549594</numeroFactura>
+    <nombreCliente>Lorena</nombreCliente>
+    <ruc>034249329</ruc>
+    <telefono>00439294</telefono>
+    <provincia>manabi</provincia>
+    <direccion>cualque</direccion>
+    <fechaEmision>09/10/2016</fechaEmision>
+    <subtotal>120</subtotal>
+    <totalIva>14,4</totalIva>
+    <pagoTotal>134,4</pagoTotal>
+  </factura>
+  <factura>
+    <id>6</id>
+    <numeroFactura>9328832</numeroFactura>
+    <nombreCliente>jonathan</nombreCliente>
+    <ruc>932913</ruc>
+    <telefono>93924932</telefono>
+    <provincia>guayas</provincia>
+    <direccion>el condor</direccion>
+    <fechaEmision>07/04/2016</fechaEmision>
+    <subtotal>60</subtotal>
+    <totalIva>8,4</totalIva>
+    <pagoTotal>68,4</pagoTotal>
+  </factura>
+  <factura>
+    <id>7</id>
+    <numeroFactura>9432943</numeroFactura>
+    <nombreCliente>dabiel</nombreCliente>
+    <ruc>043924923</ruc>
+    <telefono>043924932</telefono>
+    <provincia>manabi</provincia>
+    <direccion>el condor</direccion>
+    <fechaEmision>07/04/2016</fechaEmision>
+    <subtotal>30</subtotal>
+    <totalIva>3,6</totalIva>
+    <pagoTotal>33,6</pagoTotal>
+  </factura>
+  <factura>
+    <id>8</id>
+    <numeroFactura>743724</numeroFactura>
+    <nombreCliente>jsoty</nombreCliente>
+    <ruc>0492492</ruc>
+    <telefono>04932</telefono>
+    <provincia>manabi</provincia>
+    <direccion>las mercedes</direccion>
+    <fechaEmision>04/07/2016</fechaEmision>
+    <subtotal>30</subtotal>
+    <totalIva>3,6</totalIva>
+    <pagoTotal>33,6</pagoTotal>
+  </factura>
 </facturas>

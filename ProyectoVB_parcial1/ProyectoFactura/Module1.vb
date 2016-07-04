@@ -197,25 +197,30 @@
 
             factura.ElegirArticuloAFacturar()
 
-            Console.WriteLine("desea agregar mas productor S o facturar N")
+            Console.WriteLine(vbTab & vbTab & vbTab & "desea agregar mas productor S o facturar N")
             continuar = Console.ReadLine()
 
         Loop
-        Console.WriteLine("Ingrese Id de la factura")
+        Console.Clear()
+        Console.WriteLine(vbTab & vbTab & vbTab & "==========================================")
+        Console.WriteLine(vbTab & vbTab & vbTab & "|              Facturar        |")
+        Console.WriteLine(vbTab & vbTab & vbTab & "==========================================" & vbNewLine)
+        Console.Write(vbTab & vbTab & vbTab & "Ingrese Id de la factura")
         factura.Id = Console.ReadLine()
-        Console.WriteLine("Ingrese numerode factura")
+        Console.Write(vbTab & vbTab & vbTab & "Ingrese numerode factura: ")
+
         factura.NumeroFactura = Console.ReadLine()
-        Console.WriteLine("INgrese Nombre del cliente")
+        Console.Write(vbTab & vbTab & vbTab & "INgrese Nombre del cliente: ")
         factura.NombreCliente = Console.ReadLine()
-        Console.WriteLine("INgrese ruc del cliente")
+        Console.Write(vbTab & vbTab & vbTab & "INgrese ruc del cliente: ")
         factura.Ruc = Console.ReadLine()
-        Console.WriteLine("INgrese telefono del cliente")
+        Console.Write(vbTab & vbTab & vbTab & "INgrese telefono del cliente: ")
         factura.Telefono = Console.ReadLine()
-        Console.WriteLine("INgrese provincia")
+        Console.Write(vbTab & vbTab & vbTab & "INgrese provincia:")
         factura.provincia = Console.ReadLine()
-        Console.WriteLine("INgrese direccion del cliente")
+        Console.Write(vbTab & vbTab & vbTab & "INgrese direccion del cliente: ")
         factura.Direccion = Console.ReadLine()
-        Console.WriteLine("Ingrese fecha de emosion")
+        Console.Write(vbTab & vbTab & vbTab & "Ingrese fecha de emosion: ")
         factura.FechaEmision = Console.ReadLine()
 
         factura.SubTotal = factura.cantidad * factura.detalleFatura.PrecioUnit
@@ -228,6 +233,7 @@
 
         factura.TotalPagar = factura.SubTotal + factura.TotalIva
         factura.GuardarFactura()
+
 
     End Sub
 
