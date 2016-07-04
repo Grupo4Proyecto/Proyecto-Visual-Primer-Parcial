@@ -118,6 +118,7 @@
     <Content Include="DATOS\articulos.xml" />
     <Content Include="DATOS\categorias.xml" />
     <Content Include="DATOS\usuarios.xml" />
+    <Content Include="DATOS\facturas.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

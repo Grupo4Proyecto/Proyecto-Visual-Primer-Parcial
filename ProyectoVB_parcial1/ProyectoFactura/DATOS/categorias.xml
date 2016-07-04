@@ -55,4 +55,9 @@
     <nombre>Bandas</nombre>
     <productos />
   </categoria>
+  <categoria>
+    <id>10</id>
+    <nombre>Ventiladores</nombre>
+    <productos />
+  </categoria>
 </categorias>

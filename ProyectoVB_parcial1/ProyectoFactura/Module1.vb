@@ -115,25 +115,25 @@
             Dim empleadoNuevo As empleado = New empleado
 
             
-            Console.Write("Ingrese Id: ")
+            Console.Write(vbTab & vbTab & vbTab & "Ingrese Id: ")
             empleadoNuevo.Id = Console.ReadLine
 
-            Console.Write("Ingrese Nombre: ")
+            Console.Write(vbTab & vbTab & vbTab & "Ingrese Nombre: ")
             empleadoNuevo.Nombre = Console.ReadLine
 
-            Console.Write("Ingrese Apellido: ")
+            Console.Write(vbTab & vbTab & vbTab & "Ingrese Apellido: ")
             empleadoNuevo.Apellido = Console.ReadLine
 
-            Console.Write("Ingrese Cédula: ")
+            Console.Write(vbTab & vbTab & vbTab & "Ingrese Cédula: ")
             empleadoNuevo.Cedula = Console.ReadLine
 
-            Console.Write("Ingrese Email: ")
+            Console.Write(vbTab & vbTab & vbTab & "Ingrese Email: ")
             empleadoNuevo.Email = Console.ReadLine
 
-            Console.Write("Ingrese nombre User: ")
+            Console.Write(vbTab & vbTab & vbTab & "Ingrese nombre User: ")
             empleadoNuevo.Usuario = Console.ReadLine
 
-            Console.Write("Ingrese Password: ")
+            Console.Write(vbTab & vbTab & vbTab & "Ingrese Password: ")
             empleadoNuevo.Clave = Console.ReadLine
 
             empleadoNuevo.GuardarEmpleado()
@@ -188,7 +188,9 @@
     End Sub
 
     Public Sub Facturar()
-        Console.WriteLine("FUNCION POR DEFINIR")
+        'Console.WriteLine("FUNCION POR DEFINIR")
+        Dim factura As New factura
+        factura.ElegirArticuloAFacturar()
     End Sub
 
     Public Sub mostrarMenuVendedor()

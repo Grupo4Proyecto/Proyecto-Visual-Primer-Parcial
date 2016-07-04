@@ -1,4 +1,10 @@
-﻿Public Class factura
+﻿Imports System.Configuration
+Imports System.Xml
+
+Public Class factura
+
+    Private rutaDatos As String = ConfigurationManager.AppSettings("archivoFacturas")
+
 
     Private _id As Integer
     Public Property Id() As Integer
@@ -114,6 +120,114 @@
         End Set
     End Property
 
+
+    Public Function GuardarFactura() As Boolean
+
+        Try
+            Dim xmlDom As New XmlDocument()
+            xmlDom.Load(rutaDatos)
+
+            Dim elememtoFactura As XmlElement = xmlDom.CreateElement("factura")
+
+            Dim nodoId As XmlNode = xmlDom.CreateElement("id")
+            Dim nodoNumero As XmlNode = xmlDom.CreateElement("numeroFactura")
+            Dim nodoNombreCliente As XmlNode = xmlDom.CreateElement("nombreCliente")
+            Dim nodoRuc As XmlNode = xmlDom.CreateElement("ruc")
+            Dim nodoTelefono As XmlNode = xmlDom.CreateElement("telefono")
+            Dim nodoDieccion As XmlNode = xmlDom.CreateElement("direccion")
+            Dim nodoFechaEmision As XmlNode = xmlDom.CreateElement("fechaEmision")
+            Dim nodoSubtotal As XmlNode = xmlDom.CreateElement("subtotal")
+            Dim nodoTotalIva As XmlNode = xmlDom.CreateElement("totalIva")
+            Dim nodoTotalAPagar As XmlNode = xmlDom.CreateElement("pagoTotal")
+            Dim nodoDescripcion As XmlNode = xmlDom.CreateElement("descripcion")
+
+            nodoId.InnerText = Me.Id
+            nodoNumero.InnerText = Me.NumeroFactura
+            nodoNombreCliente.InnerText = Me.NombreCliente
+            nodoRuc.InnerText = Me.Ruc
+            nodoTelefono.InnerText = Me.Telefono
+            nodoDieccion.InnerText = Me.Direccion
+            nodoFechaEmision.InnerText = Me.FechaEmision
+            nodoSubtotal.InnerText = Me.SubTotal
+            nodoTotalIva.InnerText = Me.TotalIva
+            nodoTotalAPagar.InnerText = Me.TotalPagar
+
+            elememtoFactura.AppendChild(nodoId)
+            elememtoFactura.AppendChild(nodoNumero)
+            elememtoFactura.AppendChild(nodoNombreCliente)
+            elememtoFactura.AppendChild(nodoRuc)
+            elememtoFactura.AppendChild(nodoTelefono)
+            elememtoFactura.AppendChild(nodoDieccion)
+            elememtoFactura.AppendChild(nodoFechaEmision)
+            elememtoFactura.AppendChild(nodoSubtotal)
+            elememtoFactura.AppendChild(nodoTotalIva)
+            elememtoFactura.AppendChild(nodoTotalAPagar)
+
+            xmlDom.DocumentElement.AppendChild(elememtoFactura)
+            xmlDom.Save(rutaDatos)
+        Catch ex As Exception
+            Return False
+        End Try
+        
+        Return True
+
+    End Function
+
+
+    Public Sub ElegirArticuloAFacturar()
+        Dim articulo As String
+        Dim cantidad As Integer
+        Dim continuar As String = "n"
+        Dim xmlDom As New XmlDocument()
+        xmlDom.Load(ConfigurationManager.AppSettings("archivoArticulos"))
+        Dim listaDeArticulos As XmlNodeList = xmlDom.GetElementsByTagName("articulos")
+
+
+        Do While continuar = "n"
+            For Each nodoArticulo As XmlNode In listaDeArticulos
+                For Each elementosArticulo As XmlNode In nodoArticulo.ChildNodes
+                    Dim id As String = elementosArticulo.Item("id").InnerText
+                    Dim nombre As String = elementosArticulo.Item("nombre").InnerText
+                    Console.Write(vbTab & vbTab & vbTab & id)
+                    Console.WriteLine(nombre)
+                Next
+                
+
+            Next
+            Console.WriteLine(vbTab & vbTab & vbTab & "Ingrese Id del articulo")
+            articulo = Console.ReadLine
+
+            For Each articulos As XmlNode In listaDeArticulos
+                For Each elementosDeArticulos As XmlNode In articulos.ChildNodes
+                    Try
+
+                        Console.WriteLine("ingrese cantidad")
+                        cantidad = Console.ReadLine()
+                        'cantidad < articulos.Item("stock").InnerText
+
+                        Dim detalleFatura As New detalleFactura()
+                        detalleFatura.Cantidad = cantidad
+                        detalleFatura.PrecioUnit = elementosDeArticulos.Item("precio").InnerText
+                        Detalle.Add(detalleFatura)
+                        Console.WriteLine("funciona bien")
+
+
+
+                    Catch ex As Exception
+
+                    End Try
+                    
+                Next
+
+            Next
+            Console.WriteLine("desea continuar S para facturar N para agregarmas productos")
+            continuar = Console.ReadLine()
+
+            
+        Loop
+        GuardarFactura()
+
+    End Sub
 
 
 End Class
