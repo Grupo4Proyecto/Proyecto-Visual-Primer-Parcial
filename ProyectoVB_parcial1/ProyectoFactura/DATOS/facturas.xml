@@ -104,4 +104,17 @@
     <totalIva>3,6</totalIva>
     <pagoTotal>33,6</pagoTotal>
   </factura>
+  <factura>
+    <id>493492</id>
+    <numeroFactura>4924932</numeroFactura>
+    <nombreCliente>Lorena</nombreCliente>
+    <ruc>02394932</ruc>
+    <telefono>049329432</telefono>
+    <provincia>Manabi</provincia>
+    <direccion>El condor</direccion>
+    <fechaEmision>06/07/2016</fechaEmision>
+    <subtotal>400</subtotal>
+    <totalIva>48</totalIva>
+    <pagoTotal>448</pagoTotal>
+  </factura>
 </facturas>
