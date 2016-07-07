@@ -25,7 +25,7 @@ Public Class factura
         End Set
     End Property
 
-    
+
 
 
     Private rutaDatos As String = ConfigurationManager.AppSettings("archivoFacturas")
@@ -288,40 +288,62 @@ Public Class factura
             Next
         Next
 
-        'Console.Write(vbTab & vbTab & vbTab & "Ingrese Id del articulo: ")
-        'Dim articuloTmp As New articulo
-        'articuloTmp.Id = Console.ReadLine()
-        'detalleFatura.articulo.Add(articuloTmp)
-
-        'Console.Write(vbTab & vbTab & vbTab & "ingrese cantidad: ")
-        'Me.cantidad = Console.ReadLine()
-
-        'For Each articulos As XmlNode In listaDeArticulos
-        '    For Each elementosDeArticulos As XmlNode In articulos.ChildNodes
-        '        Try
-
-        '            'cantidad < articulos.Item("stock").InnerText
-        '            For Each articuloTemporal As articulo In detalleFatura.articulo
-        '                If (elementosDeArticulos.Item("id").InnerText = articuloTemporal.Id) Then
-        '                    detalleFatura.Cantidad = Me.cantidad
-        '                    detalleFatura.Descripcion = elementosDeArticulos.Item("nombre").InnerText
-        '                    detalleFatura.PrecioUnit = elementosDeArticulos.Item("precio").InnerText
-        '                    Me._precioUni = detalleFatura.PrecioUnit
-
-        '                    Detalle.Add(detalleFatura)
-
-
-
-        '                    Console.WriteLine(detalleFatura.Descripcion)
-        '                End If
-        '            Next
-        '        Catch ex As Exception
-
-        '        End Try
-        '    Next
-        'Next
+       
     End Sub
 
 
+    Public Function BuscarFactura() As Boolean
+        Try
+            Dim xmlDom As New XmlDocument()
+            xmlDom.Load(rutaDatos)
+
+            Dim elementoRaiz As XmlElement = xmlDom.DocumentElement
+
+            For Each elementoFactura As XmlNode In elementoRaiz.ChildNodes
+                If (elementoFactura.Item("id").InnerText = Me.Id) Then
+                    Me.NumeroFactura = elementoFactura.Item("numeroFactura").InnerText
+                    Me.NombreCliente = elementoFactura.Item("nombreCliente").InnerText
+                    Me.Ruc = elementoFactura.Item("ruc").InnerText
+                    Me.Telefono = elementoFactura.Item("telefono").InnerText
+                    Me.provincia = elementoFactura.Item("provincia").InnerText
+                    Me.Direccion = elementoFactura.Item("direccion").InnerText
+                    Me.FechaEmision = elementoFactura.Item("fechaEmision").InnerText
+                    Me.SubTotal = elementoFactura.Item("subtotal").InnerText
+                    Me.TotalIva = elementoFactura.Item("totalIva").InnerText
+                    Me.TotalPagar = elementoFactura.Item("pagoTotal").InnerText
+
+                End If
+
+
+            Next
+            Return False
+        Catch ex As Exception
+            Return False
+        End Try
+        
+
+    End Function
+
+
+    Public Sub imprimirFactura()
+        Console.Clear()
+        Console.WriteLine("" & vbNewLine)
+        Console.WriteLine(vbTab & vbTab & vbTab & "==============================")
+        Console.WriteLine(vbTab & vbTab & vbTab & "|     Factura Solicitada   |")
+        Console.WriteLine(vbTab & vbTab & vbTab & "==============================" & vbNewLine)
+
+        Console.WriteLine(vbTab & vbTab & vbTab & "Numero: " & Me.NumeroFactura)
+        Console.WriteLine(vbTab & vbTab & vbTab & "Cliente: " & Me.NombreCliente)
+        Console.WriteLine(vbTab & vbTab & vbTab & "Ruc: " & Me.Ruc)
+        Console.WriteLine(vbTab & vbTab & vbTab & "Telefono: " & Me.Telefono)
+        Console.WriteLine(vbTab & vbTab & vbTab & "Provincia: " & Me.provincia)
+        Console.WriteLine(vbTab & vbTab & vbTab & "Direccion: " & Me.Direccion)
+        Console.WriteLine(vbTab & vbTab & vbTab & "Fecha De Emision: " & Me.FechaEmision)
+        Console.WriteLine(vbTab & vbTab & vbTab & "Subtotal: " & Me.SubTotal)
+        Console.WriteLine(vbTab & vbTab & vbTab & "Iva: " & Me.TotalIva)
+        Console.WriteLine(vbTab & vbTab & vbTab & "Total a Pagar: " & Me.TotalPagar)
+        Console.Read()
+
+    End Sub
 
 End Class
