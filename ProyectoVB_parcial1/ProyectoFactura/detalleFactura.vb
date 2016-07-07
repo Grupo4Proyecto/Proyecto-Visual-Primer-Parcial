@@ -1,4 +1,7 @@
-﻿Public Class detalleFactura
+﻿Imports System.Xml
+Imports System.Configuration
+
+Public Class detalleFactura
 
     Private _id As Integer
     Public Property Id() As Integer
@@ -71,7 +74,7 @@
         End Set
     End Property
 
-
+    
 
 
 End Class

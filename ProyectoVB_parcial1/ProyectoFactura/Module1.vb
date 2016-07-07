@@ -187,6 +187,16 @@
 
     End Sub
 
+    Public Sub buscarFactura()
+        Dim facturaABuscar As New factura()
+        Console.Clear()
+        Console.Write(vbTab & vbTab & vbTab & "Ingrese Id la factura: ")
+        facturaABuscar.Id = Console.ReadLine()
+        facturaABuscar.BuscarFactura()
+        facturaABuscar.imprimirFactura()
+
+    End Sub
+
     Public Sub Facturar()
         'INGRESO DE LA CABECERA
         'Dim provincia As New provincia()
@@ -269,7 +279,9 @@
             Console.WriteLine(vbTab & vbTab & vbTab & "|         MENÚ VENDEDOR      |")
             Console.WriteLine(vbTab & vbTab & vbTab & "==============================" & vbNewLine)
             Console.WriteLine(vbTab & vbTab & vbTab & "1.- Facturar" & vbNewLine)
-            Console.WriteLine(vbTab & vbTab & vbTab & "2.- Salir" & vbNewLine)
+            Console.WriteLine(vbTab & vbTab & vbTab & "2.- Buscar Factura" & vbNewLine)
+            Console.WriteLine(vbTab & vbTab & vbTab & "3.- Salir" & vbNewLine)
+
             Console.Write(vbTab & vbTab & vbTab & "Escriba su opción: ")
             opcion = Console.ReadLine()
             Console.WriteLine(vbTab & "--------------------------------------------------------------" & vbNewLine)
@@ -278,6 +290,8 @@
                 Case 1
                     Facturar()
                 Case 2
+                    buscarFactura()
+                Case 3
                     Exit While
                 Case Else
                     Console.WriteLine("Opción no existe. Escriba bien.")
