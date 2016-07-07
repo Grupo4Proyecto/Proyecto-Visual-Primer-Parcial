@@ -188,19 +188,10 @@
     End Sub
 
     Public Sub Facturar()
-        'Console.WriteLine("FUNCION POR DEFINIR")
-        Dim provincia As New provincia()
-        Dim continuar As String = "s"
+        'INGRESO DE LA CABECERA
+        'Dim provincia As New provincia()
         Dim factura As New factura()
-        Dim detalleFatura As New detalleFactura()
-        Do While continuar = "s"
 
-            factura.ElegirArticuloAFacturar()
-
-            Console.WriteLine(vbTab & vbTab & vbTab & "desea agregar mas productor S o facturar N")
-            continuar = Console.ReadLine()
-
-        Loop
         Console.Clear()
         Console.WriteLine(vbTab & vbTab & vbTab & "==========================================")
         Console.WriteLine(vbTab & vbTab & vbTab & "|              Facturar        |")
@@ -210,30 +201,61 @@
         Console.Write(vbTab & vbTab & vbTab & "Ingrese numerode factura: ")
 
         factura.NumeroFactura = Console.ReadLine()
-        Console.Write(vbTab & vbTab & vbTab & "INgrese Nombre del cliente: ")
+        Console.Write(vbTab & vbTab & vbTab & "Ingrese Nombre del cliente: ")
         factura.NombreCliente = Console.ReadLine()
-        Console.Write(vbTab & vbTab & vbTab & "INgrese ruc del cliente: ")
+        Console.Write(vbTab & vbTab & vbTab & "Ingrese ruc del cliente: ")
         factura.Ruc = Console.ReadLine()
-        Console.Write(vbTab & vbTab & vbTab & "INgrese telefono del cliente: ")
+        Console.Write(vbTab & vbTab & vbTab & "Ingrese telefono del cliente: ")
         factura.Telefono = Console.ReadLine()
-        Console.Write(vbTab & vbTab & vbTab & "INgrese provincia:")
+        Console.Write(vbTab & vbTab & vbTab & "Ingrese provincia:")
         factura.provincia = Console.ReadLine()
-        Console.Write(vbTab & vbTab & vbTab & "INgrese direccion del cliente: ")
+        Console.Write(vbTab & vbTab & vbTab & "Ingrese direccion del cliente: ")
         factura.Direccion = Console.ReadLine()
         Console.Write(vbTab & vbTab & vbTab & "Ingrese fecha de emosion: ")
         factura.FechaEmision = Console.ReadLine()
 
-        factura.SubTotal = factura.cantidad * factura.detalleFatura.PrecioUnit
 
-        If (factura.provincia = "Manabi" Or factura.provincia = "manabi" Or factura.provincia = "Esmeraldas" Or factura.provincia = "esmeraldas") Then
-            factura.TotalIva = factura.SubTotal * 0.12
-        Else
-            factura.TotalIva = factura.SubTotal * 0.14
-        End If
 
-        factura.TotalPagar = factura.SubTotal + factura.TotalIva
+        'INGRESO DE LOS DETALLES
+        Dim continuar As String = "s"
+
+        Do While continuar = "s"
+            factura.ElegirArticuloAFacturar()
+
+            '==========================================
+            Dim nuevoDetalle As New detalleFactura()
+
+            Console.Write(vbTab & vbTab & vbTab & "Ingrese Id del articulo: ")
+            Dim nuevoArticulo As New articulo
+            nuevoArticulo.Id = Console.ReadLine()
+            nuevoArticulo.Buscar()
+
+            nuevoDetalle.Descripcion = nuevoArticulo.Nombre
+            nuevoDetalle.PrecioUnit = nuevoArticulo.Precio
+
+            Console.Write(vbTab & vbTab & vbTab & "ingrese cantidad: ")
+            nuevoDetalle.Cantidad = Console.ReadLine()
+
+            nuevoDetalle.Costo = nuevoArticulo.Precio * nuevoDetalle.Cantidad
+
+            If (factura.provincia.ToLower = "manabi" Or factura.provincia.ToLower = "esmeralda") Then
+                nuevoDetalle.Iva = nuevoDetalle.Costo * 0.12
+            Else
+                nuevoDetalle.Iva = nuevoDetalle.Costo * 0.14
+            End If
+
+            nuevoDetalle.articulo = nuevoArticulo
+
+            factura.Detalle.Add(nuevoDetalle)
+
+            '==================================
+
+            Console.WriteLine(vbTab & vbTab & vbTab & "desea agregar mas productor S o facturar N")
+            continuar = Console.ReadLine()
+        Loop
+
+        factura.TotalPagar = factura.CalcularTotal()
         factura.GuardarFactura()
-
 
     End Sub
 

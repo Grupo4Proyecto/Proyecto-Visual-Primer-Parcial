@@ -92,29 +92,65 @@
     <pagoTotal>33,6</pagoTotal>
   </factura>
   <factura>
-    <id>8</id>
-    <numeroFactura>743724</numeroFactura>
-    <nombreCliente>jsoty</nombreCliente>
-    <ruc>0492492</ruc>
-    <telefono>04932</telefono>
-    <provincia>manabi</provincia>
-    <direccion>las mercedes</direccion>
-    <fechaEmision>04/07/2016</fechaEmision>
-    <subtotal>30</subtotal>
-    <totalIva>3,6</totalIva>
-    <pagoTotal>33,6</pagoTotal>
-  </factura>
-  <factura>
-    <id>493492</id>
-    <numeroFactura>4924932</numeroFactura>
-    <nombreCliente>Lorena</nombreCliente>
-    <ruc>02394932</ruc>
-    <telefono>049329432</telefono>
+    <id>14</id>
+    <numeroFactura>9382</numeroFactura>
+    <nombreCliente>David</nombreCliente>
+    <ruc>094838</ruc>
+    <telefono>0493493</telefono>
     <provincia>Manabi</provincia>
     <direccion>El condor</direccion>
     <fechaEmision>06/07/2016</fechaEmision>
-    <subtotal>400</subtotal>
-    <totalIva>48</totalIva>
-    <pagoTotal>448</pagoTotal>
+    <subtotal>800</subtotal>
+    <totalIva>96</totalIva>
+    <pagoTotal>896</pagoTotal>
+  </factura>
+  <factura>
+    <id>6543</id>
+    <numeroFactura>865</numeroFactura>
+    <nombreCliente>aaa</nombreCliente>
+    <ruc>5467</ruc>
+    <telefono>96543</telefono>
+    <provincia>manabi</provincia>
+    <direccion>987khjgd</direccion>
+    <fechaEmision>12/10/2006</fechaEmision>
+    <subtotal>0</subtotal>
+    <totalIva>0</totalIva>
+    <pagoTotal>0</pagoTotal>
+  </factura>
+  <factura>
+    <id>976</id>
+    <numeroFactura>9876</numeroFactura>
+    <nombreCliente>976</nombreCliente>
+    <ruc>9765</ruc>
+    <telefono>97865</telefono>
+    <provincia>manabi</provincia>
+    <direccion>0986asd</direccion>
+    <fechaEmision>12/12/2012</fechaEmision>
+    <subtotal>0</subtotal>
+    <totalIva>0</totalIva>
+    <pagoTotal>0</pagoTotal>
+    <detalle>
+      <linea cantidad="2" costo="400" descripcion="Llantas1" precio="200" articulo="1" iva="48" />
+      <linea cantidad="2" costo="60" descripcion="Radiador1" precio="30" articulo="2" iva="7,2" />
+      <linea cantidad="3" costo="600" descripcion="Llantas1" precio="200" articulo="1" iva="72" />
+    </detalle>
+  </factura>
+  <factura>
+    <id>9494</id>
+    <numeroFactura>95439</numeroFactura>
+    <nombreCliente>jonthan</nombreCliente>
+    <ruc>09432</ruc>
+    <telefono>094932</telefono>
+    <provincia>Manabi</provincia>
+    <direccion>el condor</direccion>
+    <fechaEmision>06/07/2016</fechaEmision>
+    <subtotal>790</subtotal>
+    <totalIva>94,8</totalIva>
+    <pagoTotal>884,8</pagoTotal>
+    <detalle>
+      <linea cantidad="2" costo="400" descripcion="Llantas1" precio="200" articulo="1" iva="48" />
+      <linea cantidad="4" costo="360" descripcion="Rodamiento cónico" precio="90" articulo="3" iva="43,2" />
+      <linea cantidad="1" costo="30" descripcion="Radiador1" precio="30" articulo="2" iva="3,6" />
+    </detalle>
   </factura>
 </facturas>

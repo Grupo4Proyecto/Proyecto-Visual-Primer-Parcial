@@ -76,6 +76,24 @@ Public Class categoria
     End Function
 
 
+    Public Function Buscar() As Boolean
+        Try
+            Dim doc As New XmlDocument
+            doc.Load(rutaDatos)
 
+            Dim elementoRaiz As XmlElement = doc.DocumentElement
+
+            For Each elementoArticulo As XmlNode In elementoRaiz.ChildNodes
+                If (elementoArticulo.Item("id").InnerText = Me.Id) Then
+                    Me.Nombre = elementoArticulo.Item("nombre").InnerText
+                    Return True
+                End If
+            Next
+
+            Return False
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
 
 End Class

@@ -163,4 +163,34 @@ Public Class articulo
         End Try
     End Function
 
+    Public Function Buscar() As Boolean
+        Try
+            Dim doc As New XmlDocument
+            doc.Load(rutaDatos)
+
+            Dim elementoRaiz As XmlElement = doc.DocumentElement
+
+            For Each elementoArticulo As XmlNode In elementoRaiz.ChildNodes
+                If (elementoArticulo.Item("id").InnerText = Me.Id) Then
+
+                    Me.Marca = elementoArticulo.Item("marca").InnerText
+                    Me.Modelo = elementoArticulo.Item("modelo").InnerText
+                    Me.Nombre = elementoArticulo.Item("nombre").InnerText
+                    Me.Precio = elementoArticulo.Item("precio").InnerText
+                    Me.Estado = elementoArticulo.Item("estado").InnerText
+                    Me.AplicaIva = elementoArticulo.Item("aplicaIva").InnerText
+                    Me.Stock = elementoArticulo.Item("stock").InnerText
+                    Me.Descripcion = elementoArticulo.Item("descripcion").InnerText
+                    Me.Categoria.Id = elementoArticulo.Item("categoria").InnerText
+                    Me.Categoria.Buscar()
+                    Return True
+                End If
+            Next
+
+            Return False
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
+
 End Class

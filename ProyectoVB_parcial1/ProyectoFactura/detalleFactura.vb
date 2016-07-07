@@ -10,6 +10,17 @@
         End Set
     End Property
 
+    Private _articulo As New articulo
+    Public Property articulo() As articulo
+        Get
+            Return _articulo
+        End Get
+        Set(ByVal value As articulo)
+            _articulo = value
+        End Set
+
+    End Property
+
     Private _cantidad As Integer
     Public Property Cantidad() As Integer
         Get

@@ -25,15 +25,8 @@ Public Class factura
         End Set
     End Property
 
-    Private _articulo As New List(Of articulo)
-    Public Property articulo() As List(Of articulo)
-        Get
-            Return _articulo
-        End Get
-        Set(ByVal value As List(Of articulo))
-            _articulo = value
-        End Set
-    End Property
+    
+
 
     Private rutaDatos As String = ConfigurationManager.AppSettings("archivoFacturas")
 
@@ -163,6 +156,28 @@ Public Class factura
     End Property
 
 
+    Public Function CalcularTotal() As Decimal
+        Try
+            Dim total As Decimal = 0
+            Dim subtotal As Decimal = 0
+            Dim totalIva As Decimal = 0
+            For Each lineaDetalle As detalleFactura In Me.Detalle
+                subtotal = subtotal + lineaDetalle.Costo
+                totalIva = totalIva + lineaDetalle.Iva
+                total = total + (lineaDetalle.Costo + lineaDetalle.Iva)
+            Next
+            Me.TotalIva = totalIva
+            Me.SubTotal = subtotal
+            Return total
+        Catch ex As Exception
+            Me.TotalIva = 0
+            Me.SubTotal = 0
+            Return 0
+        End Try
+    End Function
+
+
+
     Public Function GuardarFactura() As Boolean
 
         Try
@@ -209,6 +224,45 @@ Public Class factura
             elememtoFactura.AppendChild(nodoTotalIva)
             elememtoFactura.AppendChild(nodoTotalAPagar)
 
+
+            Dim elementoDetalle As XmlElement = xmlDom.CreateElement("detalle")
+
+            For Each linea As detalleFactura In Me.Detalle
+                Dim nodoLinea As XmlElement = xmlDom.CreateElement("linea")
+
+                Dim attrCantidad As XmlAttribute = xmlDom.CreateAttribute("cantidad")
+                attrCantidad.Value = linea.Cantidad
+
+                Dim attrCosto As XmlAttribute = xmlDom.CreateAttribute("costo")
+                attrCosto.Value = linea.Costo
+
+                Dim attrDescripcion As XmlAttribute = xmlDom.CreateAttribute("descripcion")
+                attrDescripcion.Value = linea.Descripcion
+
+                Dim attrPrecio As XmlAttribute = xmlDom.CreateAttribute("precio")
+                attrPrecio.Value = linea.PrecioUnit
+
+                Dim attrIVA As XmlAttribute = xmlDom.CreateAttribute("iva")
+                attrIVA.Value = linea.Iva
+
+                Dim attrArticulo As XmlAttribute = xmlDom.CreateAttribute("articulo")
+                attrArticulo.Value = linea.articulo.Id
+
+
+                nodoLinea.Attributes.Append(attrCantidad)
+                nodoLinea.Attributes.Append(attrCosto)
+                nodoLinea.Attributes.Append(attrDescripcion)
+                nodoLinea.Attributes.Append(attrPrecio)
+                nodoLinea.Attributes.Append(attrArticulo)
+                nodoLinea.Attributes.Append(attrIVA)
+
+                elementoDetalle.AppendChild(nodoLinea)
+            Next
+            elememtoFactura.AppendChild(elementoDetalle)
+
+
+
+
             xmlDom.DocumentElement.AppendChild(elememtoFactura)
             xmlDom.Save(rutaDatos)
         Catch ex As Exception
@@ -221,13 +275,9 @@ Public Class factura
 
 
     Public Sub ElegirArticuloAFacturar()
-
-
         Dim xmlDom As New XmlDocument()
         xmlDom.Load(ConfigurationManager.AppSettings("archivoArticulos"))
         Dim listaDeArticulos As XmlNodeList = xmlDom.GetElementsByTagName("articulos")
-
-
 
         For Each nodoArticulo As XmlNode In listaDeArticulos
             For Each elementosArticulo As XmlNode In nodoArticulo.ChildNodes
@@ -236,53 +286,40 @@ Public Class factura
                 Console.Write(vbTab & vbTab & vbTab & id)
                 Console.WriteLine(nombre)
             Next
-
-
         Next
 
+        'Console.Write(vbTab & vbTab & vbTab & "Ingrese Id del articulo: ")
+        'Dim articuloTmp As New articulo
+        'articuloTmp.Id = Console.ReadLine()
+        'detalleFatura.articulo.Add(articuloTmp)
 
+        'Console.Write(vbTab & vbTab & vbTab & "ingrese cantidad: ")
+        'Me.cantidad = Console.ReadLine()
 
-        Console.Write(vbTab & vbTab & vbTab & "Ingrese Id del articulo: ")
-        Dim articuloTmp As New articulo
-        articuloTmp.Id = Console.ReadLine()
-        Me.articulo.Add(articuloTmp)
+        'For Each articulos As XmlNode In listaDeArticulos
+        '    For Each elementosDeArticulos As XmlNode In articulos.ChildNodes
+        '        Try
 
+        '            'cantidad < articulos.Item("stock").InnerText
+        '            For Each articuloTemporal As articulo In detalleFatura.articulo
+        '                If (elementosDeArticulos.Item("id").InnerText = articuloTemporal.Id) Then
+        '                    detalleFatura.Cantidad = Me.cantidad
+        '                    detalleFatura.Descripcion = elementosDeArticulos.Item("nombre").InnerText
+        '                    detalleFatura.PrecioUnit = elementosDeArticulos.Item("precio").InnerText
+        '                    Me._precioUni = detalleFatura.PrecioUnit
 
-        Console.Write(vbTab & vbTab & vbTab & "ingrese cantidad: ")
-        Me.cantidad = Console.ReadLine()
-
-        For Each articulos As XmlNode In listaDeArticulos
-            For Each elementosDeArticulos As XmlNode In articulos.ChildNodes
-                Try
-
-                    'cantidad < articulos.Item("stock").InnerText
-                    For Each articuloTemporal As articulo In articulo
-                        If (elementosDeArticulos.Item("id").InnerText = articuloTemporal.Id) Then
-                            detalleFatura.Cantidad = Me.cantidad
-                            detalleFatura.Descripcion = elementosDeArticulos.Item("nombre").InnerText
-                            detalleFatura.PrecioUnit = elementosDeArticulos.Item("precio").InnerText
-                            Me._precioUni = detalleFatura.PrecioUnit
-
-                            Detalle.Add(detalleFatura)
-                            'jajajja
-
-
-                            Console.WriteLine(detalleFatura.Descripcion)
-                        End If
-                    Next
-
-
-                Catch ex As Exception
-
-                End Try
-
-            Next
-
-        Next
+        '                    Detalle.Add(detalleFatura)
 
 
 
+        '                    Console.WriteLine(detalleFatura.Descripcion)
+        '                End If
+        '            Next
+        '        Catch ex As Exception
 
+        '        End Try
+        '    Next
+        'Next
     End Sub
 
 

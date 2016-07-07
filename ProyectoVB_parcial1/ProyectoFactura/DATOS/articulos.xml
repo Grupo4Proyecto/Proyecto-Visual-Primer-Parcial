@@ -9,7 +9,7 @@
     <modelo>Patito</modelo>
     <stock>180</stock>
     <aplicaIva>True</aplicaIva>
-    <estado>&#x0;</estado>
+    <estado>True</estado>
     <categoria>1</categoria>
   </articulo>
   <articulo>
@@ -21,7 +21,7 @@
     <modelo>Pato2</modelo>
     <stock>20</stock>
     <aplicaIva>False</aplicaIva>
-    <estado>&#x0;</estado>
+    <estado>True</estado>
     <categoria>2</categoria>
   </articulo>
   <articulo>
@@ -33,7 +33,7 @@
     <modelo>Industrial</modelo>
     <stock>12</stock>
     <aplicaIva>True</aplicaIva>
-    <estado>&#x0;</estado>
+    <estado>True</estado>
     <categoria>7</categoria>
   </articulo>
   <articulo>
@@ -45,7 +45,7 @@
     <modelo>Acanaladas</modelo>
     <stock>30</stock>
     <aplicaIva>True</aplicaIva>
-    <estado>&#x0;</estado>
+    <estado>true</estado>
     <categoria>9</categoria>
   </articulo>
 </articulos>
