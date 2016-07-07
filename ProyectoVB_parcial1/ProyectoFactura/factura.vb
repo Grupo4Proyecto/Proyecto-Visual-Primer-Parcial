@@ -264,7 +264,7 @@ Public Class factura
                             Me._precioUni = detalleFatura.PrecioUnit
 
                             Detalle.Add(detalleFatura)
-
+                            'jajajja
 
 
                             Console.WriteLine(detalleFatura.Descripcion)
