@@ -1,6 +1,8 @@
 ﻿Imports System.Xml
 Imports System.Configuration
 
+'Prueba del Branch Lorena
+
 Public Class empleado
     Inherits persona
 
