@@ -96,4 +96,57 @@ Public Class categoria
         End Try
     End Function
 
+    Public Sub MostrarCategoria()
+        Try
+            Dim XmlDoc As New XmlDocument()
+            XmlDoc.Load(rutaDatos)
+            Dim elementoRaiz As XmlNodeList = XmlDoc.GetElementsByTagName("categorias")
+
+            Console.Clear()
+            Console.WriteLine(vbTab & vbTab & vbTab & "==========================================")
+            Console.WriteLine(vbTab & vbTab & vbTab & "|      MANTENIMIENTO DE CATEGORIA        |")
+            Console.WriteLine(vbTab & vbTab & vbTab & "==========================================" & vbNewLine)
+
+            For Each elementoCategoria As XmlNode In elementoRaiz
+                For Each elementosDeCategoria As XmlNode In elementoCategoria.ChildNodes
+                    Console.WriteLine(vbTab & vbTab & vbTab & elementosDeCategoria.Item("id").InnerText & elementosDeCategoria.Item("nombre").InnerText)
+
+                Next
+
+            Next
+
+
+        Catch ex As Exception
+
+        End Try
+        
+
+
+    End Sub
+
+    Public Sub modificarCategoria()
+        Try
+            Dim xmlDoc As New XmlDocument()
+            xmlDoc.Load(rutaDatos)
+            Dim elementoRaiz As XmlNodeList = xmlDoc.GetElementsByTagName("categorias")
+            Dim elemetoCategoria As XmlElement = xmlDoc.CreateElement("categoria")
+
+            For Each elementoCategoriaNodo As XmlNode In elementoRaiz
+                For Each nodoHijo As XmlNode In elementoCategoriaNodo.ChildNodes
+
+                    Dim nodoNombre As XmlNode = xmlDoc.CreateElement("nombre")
+                    nodoNombre.InnerText = Me.Nombre
+
+                    elemetoCategoria.ReplaceChild(nodoNombre, nodoHijo)
+                    xmlDoc.DocumentElement.ReplaceChild(elemetoCategoria, elementoCategoriaNodo)
+                    xmlDoc.Save(rutaDatos)
+                Next
+            Next
+        Catch ex As Exception
+
+        End Try
+
+
+    End Sub
+
 End Class

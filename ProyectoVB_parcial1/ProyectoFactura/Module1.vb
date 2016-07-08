@@ -1,5 +1,16 @@
 ﻿Module Module1
 
+    Private _arrCategoria As New List(Of categoria)
+    Public Property arrCategorias() As List(Of categoria)
+        Get
+            Return _arrCategoria
+        End Get
+        Set(ByVal value As List(Of categoria))
+            _arrCategoria = value
+        End Set
+    End Property
+
+
     Sub Main()
 
         Dim tipoRol As Byte = 1
@@ -36,9 +47,9 @@
                 objCategoria.Id = Console.ReadLine()
             Loop While (objCategoria.existeId())
 
-            
 
-           
+
+
 
             Console.Write(vbTab & vbTab & vbTab & "Nombre : ")
             objCategoria.Nombre = Console.ReadLine()
@@ -46,10 +57,27 @@
             objCategoria.GuardarCategoria()
 
             Console.Write(vbTab & vbTab & vbTab & "Categoría guardada exitosamente" & vbNewLine & vbNewLine)
+            arrCategorias.Add(objCategoria)
 
             Console.Write(vbTab & vbTab & vbTab & "¿Guardar otra categoría? [s/n]: ")
             continuar = Console.ReadLine()
         Loop
+    End Sub
+
+    Public Sub EditarCategoria()
+        Dim categoriaTmp As New categoria()
+        categoriaTmp.MostrarCategoria()
+        Console.Write(vbTab & vbTab & vbTab & "Ingrese El Id de Categoria: ")
+        categoriaTmp.Id = Console.ReadLine()
+        If categoriaTmp.existeId() Then
+            Console.Write(vbTab & vbTab & vbTab & "Ingrese el nuevo nombre de la Categoria: ")
+            categoriaTmp.Nombre = Console.ReadLine()
+
+            categoriaTmp.modificarCategoria()
+            Console.ReadLine()
+        End If
+
+        
     End Sub
 
     Public Sub agregarProducto()
@@ -114,7 +142,7 @@
 
             Dim empleadoNuevo As empleado = New empleado
 
-            
+
             Console.Write(vbTab & vbTab & vbTab & "Ingrese Id: ")
             empleadoNuevo.Id = Console.ReadLine
 
@@ -163,22 +191,28 @@
             Console.WriteLine(vbTab & vbTab & vbTab & "==============================")
             Console.WriteLine(vbTab & vbTab & vbTab & "|          MENÚ ADMIN        |")
             Console.WriteLine(vbTab & vbTab & vbTab & "==============================" & vbNewLine)
-            Console.WriteLine(vbTab & vbTab & vbTab & "1.- Agregar categoría" & vbNewLine)
-            Console.WriteLine(vbTab & vbTab & vbTab & "2.- Agregar producto" & vbNewLine)
-            Console.WriteLine(vbTab & vbTab & vbTab & "3.- Agregar Vendedor" & vbNewLine)
-            Console.WriteLine(vbTab & vbTab & vbTab & "4.- Salir" & vbNewLine)
+            Console.WriteLine(vbTab & vbTab & vbTab & "1.- Agregar Vendedor" & vbNewLine)
+            Console.WriteLine(vbTab & vbTab & vbTab & "2.- Agregar categoría" & vbNewLine)
+            Console.WriteLine(vbTab & vbTab & vbTab & "3.- Editar Categoría" & vbNewLine)
+            Console.WriteLine(vbTab & vbTab & vbTab & "4.- Agregar Producto" & vbNewLine)
+
+
+            Console.WriteLine(vbTab & vbTab & vbTab & "5.- Salir" & vbNewLine)
             Console.Write(vbTab & vbTab & vbTab & "Escriba su opción: ")
             opcion = Console.ReadLine()
             Console.WriteLine(vbTab & "--------------------------------------------------------------" & vbNewLine)
 
             Select Case opcion
                 Case 1
-                    agregarCategoria()
-                Case 2
-                    agregarProducto()
-                Case 3
                     agregarVendedor()
+                Case 2
+                    agregarCategoria()
+                Case 3
+                    EditarCategoria()
                 Case 4
+                    agregarProducto()
+                Case 5
+
                     Exit While
                 Case Else
                     Console.WriteLine("Opción no existe. Escriba bien.")
