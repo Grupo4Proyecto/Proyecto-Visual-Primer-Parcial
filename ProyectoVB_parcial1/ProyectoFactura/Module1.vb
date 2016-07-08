@@ -48,9 +48,6 @@
             Loop While (objCategoria.existeId())
 
 
-
-
-
             Console.Write(vbTab & vbTab & vbTab & "Nombre : ")
             objCategoria.Nombre = Console.ReadLine()
 
@@ -195,9 +192,10 @@
             Console.WriteLine(vbTab & vbTab & vbTab & "2.- Agregar categoría" & vbNewLine)
             Console.WriteLine(vbTab & vbTab & vbTab & "3.- Editar Categoría" & vbNewLine)
             Console.WriteLine(vbTab & vbTab & vbTab & "4.- Agregar Producto" & vbNewLine)
+            Console.WriteLine(vbTab & vbTab & vbTab & "5.- Ver Facturas" & vbNewLine)
 
 
-            Console.WriteLine(vbTab & vbTab & vbTab & "5.- Salir" & vbNewLine)
+            Console.WriteLine(vbTab & vbTab & vbTab & "6.- Salir" & vbNewLine)
             Console.Write(vbTab & vbTab & vbTab & "Escriba su opción: ")
             opcion = Console.ReadLine()
             Console.WriteLine(vbTab & "--------------------------------------------------------------" & vbNewLine)
@@ -212,7 +210,8 @@
                 Case 4
                     agregarProducto()
                 Case 5
-
+                    buscarFactura()
+                Case 6
                     Exit While
                 Case Else
                     Console.WriteLine("Opción no existe. Escriba bien.")
