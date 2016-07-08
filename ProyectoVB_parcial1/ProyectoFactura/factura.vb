@@ -346,4 +346,62 @@ Public Class factura
 
     End Sub
 
+    Public Sub MostrarFacturas()
+        Try
+            Console.Clear()
+            
+            Dim xmlDoc As New XmlDocument()
+            xmlDoc.Load(rutaDatos)
+            Dim nodoRaiz As XmlNodeList = xmlDoc.GetElementsByTagName("facturas")
+
+            For Each nodoFactura As XmlNode In nodoRaiz
+                For Each nodoHijos As XmlNode In nodoFactura.ChildNodes
+                    Dim id As Integer = nodoHijos.Item("id").InnerText
+                    Dim nombreCliente As String = nodoHijos.Item("nombreCliente").InnerText
+                    Dim rucC As String = nodoHijos.Item("ruc").InnerText
+                    Dim subTotal As Double = nodoHijos.Item("subtotal").InnerText
+                    Dim totalIva As Double = nodoHijos.Item("totalIva").InnerText
+                    Dim totalPagar As Double = nodoHijos.Item("pagoTotal").InnerText
+                    Console.Write("|Id:" & id)
+                    Console.Write("|Cliente:" & nombreCliente)
+                    Console.Write("|Ruc:" & rucC)
+                    Console.Write("|Subtotal:" & subTotal)
+                    Console.Write("|Iva:" & totalIva)
+                    Console.WriteLine("|Total a Pagar:" & totalPagar)
+
+                Next
+            Next
+           
+        Catch ex As Exception
+
+        End Try
+        
+    End Sub
+
+    Public Sub MostrarVentasTotales()
+        Try
+            Dim VentasTotales As Double = 0
+            Dim ivaTotales As Double = 0
+
+            Dim xmlDoc As New XmlDocument()
+            xmlDoc.Load(rutaDatos)
+            Dim nodoRaiz As XmlNodeList = xmlDoc.GetElementsByTagName("facturas")
+
+            For Each nodoFactura As XmlNode In nodoRaiz
+                For Each nodoHijos As XmlNode In nodoFactura.ChildNodes
+                    ivaTotales += nodoHijos.Item("totalIva").InnerText
+                    VentasTotales += nodoHijos.Item("pagoTotal").InnerText
+
+                Next
+            Next
+            Console.Write("Total de Iva: " & ivaTotales)
+            Console.Write(vbTab & "Ventas Totales: " & VentasTotales)
+            Console.ReadLine()
+        Catch ex As Exception
+
+        End Try
+       
+
+    End Sub
+
 End Class

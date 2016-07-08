@@ -169,10 +169,6 @@
             continuar = Console.ReadLine()
         Loop
 
-
-
-
-
     End Sub
 
     Public Sub salir()
@@ -192,9 +188,7 @@
             Console.WriteLine(vbTab & vbTab & vbTab & "2.- Agregar categoría" & vbNewLine)
             Console.WriteLine(vbTab & vbTab & vbTab & "3.- Editar Categoría" & vbNewLine)
             Console.WriteLine(vbTab & vbTab & vbTab & "4.- Agregar Producto" & vbNewLine)
-            Console.WriteLine(vbTab & vbTab & vbTab & "5.- Ver Facturas" & vbNewLine)
-
-
+            Console.WriteLine(vbTab & vbTab & vbTab & "5.- Ver Reporte De Facturas" & vbNewLine)
             Console.WriteLine(vbTab & vbTab & vbTab & "6.- Salir" & vbNewLine)
             Console.Write(vbTab & vbTab & vbTab & "Escriba su opción: ")
             opcion = Console.ReadLine()
@@ -210,7 +204,7 @@
                 Case 4
                     agregarProducto()
                 Case 5
-                    buscarFactura()
+                    MostrarReporteDeFacturas()
                 Case 6
                     Exit While
                 Case Else
@@ -221,7 +215,9 @@
     End Sub
 
     Public Sub buscarFactura()
+
         Dim facturaABuscar As New factura()
+        facturaABuscar.MostrarFacturas()
         Console.Clear()
         Console.Write(vbTab & vbTab & vbTab & "Ingrese Id la factura: ")
         facturaABuscar.Id = Console.ReadLine()
@@ -263,6 +259,7 @@
         Dim continuar As String = "s"
 
         Do While continuar = "s"
+            Console.Clear()
             factura.ElegirArticuloAFacturar()
 
             '==========================================
@@ -365,5 +362,12 @@
 
         Return False
     End Function
+
+    Public Sub MostrarReporteDeFacturas()
+        Dim facturaTmp As New factura()
+        facturaTmp.MostrarFacturas()
+        facturaTmp.MostrarVentasTotales()
+        Console.ReadLine()
+    End Sub
 
 End Module

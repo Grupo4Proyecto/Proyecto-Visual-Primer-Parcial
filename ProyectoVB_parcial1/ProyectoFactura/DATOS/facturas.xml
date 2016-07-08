@@ -1,26 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <facturas>
-  
   <factura>
-    <id>976</id>
-    <numeroFactura>9876</numeroFactura>
-    <nombreCliente>976</nombreCliente>
-    <ruc>9765</ruc>
-    <telefono>97865</telefono>
-    <provincia>manabi</provincia>
-    <direccion>0986asd</direccion>
-    <fechaEmision>12/12/2012</fechaEmision>
-    <subtotal>0</subtotal>
-    <totalIva>0</totalIva>
-    <pagoTotal>0</pagoTotal>
-    <detalle>
-      <linea cantidad="2" costo="400" descripcion="Llantas1" precio="200" articulo="1" iva="48" />
-      <linea cantidad="2" costo="60" descripcion="Radiador1" precio="30" articulo="2" iva="7,2" />
-      <linea cantidad="3" costo="600" descripcion="Llantas1" precio="200" articulo="1" iva="72" />
-    </detalle>
-  </factura>
-  <factura>
-    <id>9494</id>
+    <id>1</id>
     <numeroFactura>95439</numeroFactura>
     <nombreCliente>jonthan</nombreCliente>
     <ruc>09432</ruc>
@@ -35,6 +16,41 @@
       <linea cantidad="2" costo="400" descripcion="Llantas1" precio="200" articulo="1" iva="48" />
       <linea cantidad="4" costo="360" descripcion="Rodamiento cónico" precio="90" articulo="3" iva="43,2" />
       <linea cantidad="1" costo="30" descripcion="Radiador1" precio="30" articulo="2" iva="3,6" />
+    </detalle>
+  </factura>
+  <factura>
+    <id>2</id>
+    <numeroFactura>9439</numeroFactura>
+    <nombreCliente>Jonathan</nombreCliente>
+    <ruc>0930297460</ruc>
+    <telefono>0985838482</telefono>
+    <provincia>Guayas</provincia>
+    <direccion>El condor</direccion>
+    <fechaEmision>08/07/2016</fechaEmision>
+    <subtotal>580</subtotal>
+    <totalIva>81,2</totalIva>
+    <pagoTotal>661,2</pagoTotal>
+    <detalle>
+      <linea cantidad="2" costo="400" descripcion="Llantas1" precio="200" articulo="1" iva="56" />
+      <linea cantidad="2" costo="180" descripcion="Rodamiento cónico" precio="90" articulo="3" iva="25,2" />
+    </detalle>
+  </factura>
+  <factura>
+    <id>3</id>
+    <numeroFactura>123</numeroFactura>
+    <nombreCliente>Lorena</nombreCliente>
+    <ruc>09381838282</ruc>
+    <telefono>2137272</telefono>
+    <provincia>Esmeraldas</provincia>
+    <direccion>4ta etapa</direccion>
+    <fechaEmision>08/07/2016</fechaEmision>
+    <subtotal>520</subtotal>
+    <totalIva>72,8</totalIva>
+    <pagoTotal>592,8</pagoTotal>
+    <detalle>
+      <linea cantidad="2" costo="400" descripcion="Llantas1" precio="200" articulo="1" iva="56" />
+      <linea cantidad="3" costo="30" descripcion="Banda1" precio="10" articulo="4" iva="4,2" />
+      <linea cantidad="3" costo="90" descripcion="Radiador1" precio="30" articulo="2" iva="12,6" />
     </detalle>
   </factura>
 </facturas>
