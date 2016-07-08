@@ -288,7 +288,7 @@ Public Class factura
             Next
         Next
 
-       
+
     End Sub
 
 
@@ -320,7 +320,7 @@ Public Class factura
         Catch ex As Exception
             Return False
         End Try
-        
+
 
     End Function
 

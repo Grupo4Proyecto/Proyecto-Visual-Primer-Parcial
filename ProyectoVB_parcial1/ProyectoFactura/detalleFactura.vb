@@ -74,7 +74,7 @@ Public Class detalleFactura
         End Set
     End Property
 
-    
+
 
 
 End Class
