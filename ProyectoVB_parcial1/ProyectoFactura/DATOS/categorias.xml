@@ -60,4 +60,15 @@
     <nombre>Ventiladores</nombre>
     <productos />
   </categoria>
+  <categoria>
+    <id>11</id>
+    <nombre>ELectrico</nombre>
+    <productos />
+  </categoria>
+  <categoria>
+    <id>12</id>
+    <nombre>Bandas</nombre>
+    <productos />
+  </categoria>
+
 </categorias>
