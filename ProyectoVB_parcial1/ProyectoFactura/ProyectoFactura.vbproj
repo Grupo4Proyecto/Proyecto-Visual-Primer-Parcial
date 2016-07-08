@@ -67,6 +67,7 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="administrador.vb" />
     <Compile Include="empleado.vb" />
     <Compile Include="articulo.vb" />
     <Compile Include="categoria.vb" />

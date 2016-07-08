@@ -10,7 +10,6 @@
         End Set
     End Property
 
-
     Sub Main()
 
         Dim tipoRol As Byte = 1
@@ -130,6 +129,49 @@
         Loop
     End Sub
 
+    Public Sub agregarAdministrador()
+        Dim continuar As String = "s"
+
+        Do While continuar = "s"
+            Console.Clear()
+            Console.WriteLine("" & vbNewLine)
+            Console.WriteLine(vbTab & vbTab & vbTab & "==========================================")
+            Console.WriteLine(vbTab & vbTab & vbTab & "|     MANTENIMIENTO DE ADMINISTRADORES    |")
+            Console.WriteLine(vbTab & vbTab & vbTab & "==========================================" & vbNewLine)
+
+            Dim administradorNuevo As administrador = New administrador
+
+
+            Console.Write(vbTab & vbTab & vbTab & "Ingrese Id: ")
+            administradorNuevo.Id = Console.ReadLine
+
+            Console.Write(vbTab & vbTab & vbTab & "Ingrese Nombre: ")
+            administradorNuevo.Nombre = Console.ReadLine
+
+            Console.Write(vbTab & vbTab & vbTab & "Ingrese Apellido: ")
+            administradorNuevo.Apellido = Console.ReadLine
+
+            Console.Write(vbTab & vbTab & vbTab & "Ingrese Cédula: ")
+            administradorNuevo.Cedula = Console.ReadLine
+
+            Console.Write(vbTab & vbTab & vbTab & "Ingrese Email: ")
+            administradorNuevo.Email = Console.ReadLine
+
+            Console.Write(vbTab & vbTab & vbTab & "Ingrese nombre User: ")
+            administradorNuevo.Usuario = Console.ReadLine
+
+            Console.Write(vbTab & vbTab & vbTab & "Ingrese Password: ")
+            administradorNuevo.Clave = Console.ReadLine
+
+            administradorNuevo.GuardarEmpleado()
+            Console.Write("" & vbNewLine)
+            Console.Write(vbTab & vbTab & vbTab & "Administrador registrado exitosamente" & vbNewLine & vbNewLine)
+
+            Console.Write(vbTab & vbTab & vbTab & "¿Registrar otro Administrador? [s/n]: ")
+            continuar = Console.ReadLine()
+        Loop
+    End Sub
+
     Public Sub agregarVendedor()
         Dim continuar As String = "s"
 
@@ -141,7 +183,6 @@
             Console.WriteLine(vbTab & vbTab & vbTab & "==========================================" & vbNewLine)
 
             Dim empleadoNuevo As empleado = New empleado
-
 
             Console.Write(vbTab & vbTab & vbTab & "Ingrese Id: ")
             empleadoNuevo.Id = Console.ReadLine
@@ -171,11 +212,6 @@
             Console.Write(vbTab & vbTab & vbTab & "¿Registrar otro vendedor? [s/n]: ")
             continuar = Console.ReadLine()
         Loop
-
-
-
-
-
     End Sub
 
     Public Sub salir()
@@ -191,31 +227,33 @@
             Console.WriteLine(vbTab & vbTab & vbTab & "==============================")
             Console.WriteLine(vbTab & vbTab & vbTab & "|          MENÚ ADMIN        |")
             Console.WriteLine(vbTab & vbTab & vbTab & "==============================" & vbNewLine)
-            Console.WriteLine(vbTab & vbTab & vbTab & "1.- Agregar Vendedor" & vbNewLine)
-            Console.WriteLine(vbTab & vbTab & vbTab & "2.- Agregar categoría" & vbNewLine)
-            Console.WriteLine(vbTab & vbTab & vbTab & "3.- Editar Categoría" & vbNewLine)
-            Console.WriteLine(vbTab & vbTab & vbTab & "4.- Agregar Producto" & vbNewLine)
+            Console.WriteLine(vbTab & vbTab & vbTab & "1.- Agregar Administrador" & vbNewLine)
+            Console.WriteLine(vbTab & vbTab & vbTab & "2.- Agregar Vendedor" & vbNewLine)
+            Console.WriteLine(vbTab & vbTab & vbTab & "3.- Agregar categoría" & vbNewLine)
+            Console.WriteLine(vbTab & vbTab & vbTab & "4.- Editar Categoría" & vbNewLine)
+            Console.WriteLine(vbTab & vbTab & vbTab & "5.- Agregar Producto" & vbNewLine)
 
-
-            Console.WriteLine(vbTab & vbTab & vbTab & "5.- Salir" & vbNewLine)
+            Console.WriteLine(vbTab & vbTab & vbTab & "6.- Salir" & vbNewLine)
             Console.Write(vbTab & vbTab & vbTab & "Escriba su opción: ")
             opcion = Console.ReadLine()
             Console.WriteLine(vbTab & "--------------------------------------------------------------" & vbNewLine)
 
+
             Select Case opcion
                 Case 1
-                    agregarVendedor()
+                    agregarAdministrador()
                 Case 2
-                    agregarCategoria()
+                    agregarVendedor()
                 Case 3
-                    EditarCategoria()
+                    agregarCategoria()
                 Case 4
-                    agregarProducto()
+                    EditarCategoria()
                 Case 5
-
+                    agregarProducto()
+                Case 6
                     Exit While
                 Case Else
-                    Console.WriteLine("Opción no existe. Escriba bien.")
+                    Console.WriteLine("Opción no existe. Escriba bien por favor.")
             End Select
         End While
 
@@ -224,7 +262,7 @@
     Public Sub buscarFactura()
         Dim facturaABuscar As New factura()
         Console.Clear()
-        Console.Write(vbTab & vbTab & vbTab & "Ingrese Id la factura: ")
+        Console.Write(vbTab & vbTab & vbTab & "Ingrese Id. la factura: ")
         facturaABuscar.Id = Console.ReadLine()
         facturaABuscar.BuscarFactura()
         facturaABuscar.imprimirFactura()
@@ -238,24 +276,24 @@
 
         Console.Clear()
         Console.WriteLine(vbTab & vbTab & vbTab & "==========================================")
-        Console.WriteLine(vbTab & vbTab & vbTab & "|              Facturar        |")
+        Console.WriteLine(vbTab & vbTab & vbTab & "|              Facturar                  |")
         Console.WriteLine(vbTab & vbTab & vbTab & "==========================================" & vbNewLine)
         Console.Write(vbTab & vbTab & vbTab & "Ingrese Id de la factura")
         factura.Id = Console.ReadLine()
-        Console.Write(vbTab & vbTab & vbTab & "Ingrese numerode factura: ")
+        Console.Write(vbTab & vbTab & vbTab & "Ingrese número de factura: ")
 
         factura.NumeroFactura = Console.ReadLine()
         Console.Write(vbTab & vbTab & vbTab & "Ingrese Nombre del cliente: ")
         factura.NombreCliente = Console.ReadLine()
-        Console.Write(vbTab & vbTab & vbTab & "Ingrese ruc del cliente: ")
+        Console.Write(vbTab & vbTab & vbTab & "Ingrese RUC del cliente: ")
         factura.Ruc = Console.ReadLine()
-        Console.Write(vbTab & vbTab & vbTab & "Ingrese telefono del cliente: ")
+        Console.Write(vbTab & vbTab & vbTab & "Ingrese teléfono del cliente: ")
         factura.Telefono = Console.ReadLine()
         Console.Write(vbTab & vbTab & vbTab & "Ingrese provincia:")
         factura.provincia = Console.ReadLine()
-        Console.Write(vbTab & vbTab & vbTab & "Ingrese direccion del cliente: ")
+        Console.Write(vbTab & vbTab & vbTab & "Ingrese dirección del cliente: ")
         factura.Direccion = Console.ReadLine()
-        Console.Write(vbTab & vbTab & vbTab & "Ingrese fecha de emosion: ")
+        Console.Write(vbTab & vbTab & vbTab & "Ingrese fecha de emisión: ")
         factura.FechaEmision = Console.ReadLine()
 
 
@@ -269,7 +307,7 @@
             '==========================================
             Dim nuevoDetalle As New detalleFactura()
 
-            Console.Write(vbTab & vbTab & vbTab & "Ingrese Id del articulo: ")
+            Console.Write(vbTab & vbTab & vbTab & "Ingrese Id del artículo: ")
             Dim nuevoArticulo As New articulo
             nuevoArticulo.Id = Console.ReadLine()
             nuevoArticulo.Buscar()
@@ -277,7 +315,7 @@
             nuevoDetalle.Descripcion = nuevoArticulo.Nombre
             nuevoDetalle.PrecioUnit = nuevoArticulo.Precio
 
-            Console.Write(vbTab & vbTab & vbTab & "ingrese cantidad: ")
+            Console.Write(vbTab & vbTab & vbTab & "Ingrese cantidad: ")
             nuevoDetalle.Cantidad = Console.ReadLine()
 
             nuevoDetalle.Costo = nuevoArticulo.Precio * nuevoDetalle.Cantidad
@@ -294,7 +332,7 @@
 
             '==================================
 
-            Console.WriteLine(vbTab & vbTab & vbTab & "desea agregar mas productor S o facturar N")
+            Console.WriteLine(vbTab & vbTab & vbTab & "Desea agregar más productor S o facturar N")
             continuar = Console.ReadLine()
         Loop
 

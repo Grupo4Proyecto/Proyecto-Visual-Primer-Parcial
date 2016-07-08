@@ -1,7 +1,7 @@
 ﻿Imports System.Xml
 Imports System.Configuration
 
-Public Class empleado
+Public Class administrador
     Inherits persona
 
     Private rutaDatos As String = ConfigurationManager.AppSettings("archivoUsuarios")
@@ -84,7 +84,7 @@ Public Class empleado
             nodoEmail.InnerText = Me.Email
             nodoNick.InnerText = Me.Usuario
             nodoPass.InnerText = Me.Clave
-            nodoTipo.InnerText = tipo.vendedor
+            nodoTipo.InnerText = tipo.administrador
 
             elementoEmpleado.AppendChild(nodoId)
             elementoEmpleado.AppendChild(nodoNombre)
@@ -103,5 +103,6 @@ Public Class empleado
 
         Return True
     End Function
+
 
 End Class

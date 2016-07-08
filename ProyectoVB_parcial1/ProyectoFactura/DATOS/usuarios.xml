@@ -2,7 +2,7 @@
 <usuarios>
   <usuario>
     <id>6</id>
-    <nombre>jona</nombre>
+    <nombre>vendedor</nombre>
     <apellido>mac</apellido>
     <cedula>234737432</cedula>
     <email>natho</email>
@@ -90,5 +90,84 @@
     <password>1234</password>
     <tipo>2</tipo>
   </usuario>
-  
+  <usuario>
+    <id>11</id>
+    <nombre>Admin</nombre>
+    <apellido>Prueba</apellido>
+    <cedula>09000000000</cedula>
+    <email>email@prueba.com</email>
+    <nickname>admin2</nickname>
+    <password>1234</password>
+    <tipo>1</tipo>
+  </usuario>
+  <usuario>
+    <id>12</id>
+    <nombre>Vendedor</nombre>
+    <apellido>Prueba</apellido>
+    <cedula>090088000000</cedula>
+    <email>email@vendedor.com</email>
+    <nickname>vendedor2</nickname>
+    <password>1234</password>
+    <tipo>2</tipo>
+  </usuario>
+  <usuario>
+    <id>13</id>
+    <nombre>Vendedor3</nombre>
+    <apellido>Prueba</apellido>
+    <cedula>098899008898</cedula>
+    <email>3@gmail.com</email>
+    <nickname>vendedor3</nickname>
+    <password>1234</password>
+    <tipo>2</tipo>
+  </usuario>
+  <usuario>
+    <id>14</id>
+    <nombre>Prueba</nombre>
+    <apellido>2</apellido>
+    <cedula>0988776655</cedula>
+    <email>prueba@gmail.com</email>
+    <nickname>prueba</nickname>
+    <password>1234</password>
+    <tipo>1</tipo>
+  </usuario>
+  <usuario>
+    <id>15</id>
+    <nombre>admin</nombre>
+    <apellido>15</apellido>
+    <cedula>09897666</cedula>
+    <email>admin@gmail.com</email>
+    <nickname>admin4</nickname>
+    <password>1234</password>
+    <tipo>1</tipo>
+  </usuario>
+  <usuario>
+    <id>15</id>
+    <nombre>Laura</nombre>
+    <apellido>América</apellido>
+    <cedula>0986787868</cedula>
+    <email>lau@gmail.com</email>
+    <nickname>lau</nickname>
+    <password>1234</password>
+    <tipo>2</tipo>
+  </usuario>
+  <usuario>
+    <id>17</id>
+    <nombre>Vendedor</nombre>
+    <apellido>6</apellido>
+    <cedula>098765433</cedula>
+    <email>vendedor@gmail.com</email>
+    <nickname>vendedor6</nickname>
+    <password>1234</password>
+    <tipo>2</tipo>
+  </usuario>
+  <usuario>
+    <id>18</id>
+    <nombre>admin</nombre>
+    <apellido>8</apellido>
+    <cedula>90879677</cedula>
+    <email>admin@espol.edu.ec</email>
+    <nickname>admin8</nickname>
+    <password>1234</password>
+    <tipo>1</tipo>
+  </usuario>
 </usuarios>
